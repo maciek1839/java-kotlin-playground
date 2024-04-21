@@ -1,15 +1,6 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.9.23"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
-    }
+    kotlin("jvm")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 val arrowVersion: String = "1.2.0"
@@ -18,6 +9,8 @@ val arrowTestVersion: String = "1.4.0"
 val mockkVersion: String = "1.13.9"
 
 dependencies {
+    api(project(":common"))
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     testImplementation("io.mockk:mockk:$mockkVersion")

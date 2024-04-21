@@ -55,7 +55,7 @@ sonarcloud-check:
     key: "${CI_JOB_NAME}"
     paths:
       - .sonar/cache
-  script: ./gradlew sonarqube
+  script: ./gradlew check sonar
   only:
     - merge_requests
     - main

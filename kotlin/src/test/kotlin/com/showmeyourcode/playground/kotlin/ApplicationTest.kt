@@ -1,12 +1,13 @@
 package com.showmeyourcode.playground.kotlin
 
+import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.core.spec.style.AnnotationSpec
-import io.kotest.matchers.nulls.shouldNotBeNull
 
 class ApplicationTest : AnnotationSpec() {
     @Test
-    fun `should initialize class instance`() {
-        val app = Application()
-        app.shouldNotBeNull()
+    fun `should call the main method without errors`() {
+        shouldNotThrow<Throwable> {
+            main(arrayOf())
+        }
     }
 }
