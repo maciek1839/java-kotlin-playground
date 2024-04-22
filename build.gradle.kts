@@ -4,7 +4,8 @@ plugins {
 
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0" apply false
 
-    id("org.sonarqube") version "4.4.1.3373"
+    id("org.sonarqube") version "5.0.0.4638"
+    jacoco
 }
 
 allprojects{
@@ -27,6 +28,9 @@ allprojects{
         properties {
             property("sonar.projectKey", "ShowMeYourCodeYouTube_java-kotlin-playground")
             property("sonar.organization", "showmeyourcodeyoutube")
+            property("sonar.coverage.jacoco.xmlReportPaths",
+                "$rootDir/coverage-report/build/reports/jacoco/testCodeCoverageReport/testCodeCoverageReport.xml"
+            )
         }
     }
 }
@@ -38,6 +42,7 @@ val junitJupiterVersion = "5.10.2"
 subprojects {
     apply(plugin ="java")
     apply(plugin ="kotlin")
+    apply(plugin = "jacoco")
 
     val implementation by configurations
     val testRuntimeOnly by configurations
@@ -51,6 +56,15 @@ subprojects {
         // required to create a Gradle test report
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+    }
+
+    tasks.test {
+        // report is always generated after tests run
+        finalizedBy(tasks.jacocoTestReport)
+    }
+    tasks.jacocoTestReport {
+        // tests are required to run before generating the report
+        dependsOn(tasks.test)
     }
 
     tasks.test {

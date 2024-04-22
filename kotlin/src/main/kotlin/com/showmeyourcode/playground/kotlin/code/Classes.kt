@@ -1,5 +1,7 @@
 package com.showmeyourcode.playground.kotlin.code
 
+import com.showmeyourcode.playground.kotlin.common.Logging
+
 class SmartDevice {
     var brand: String = ""
         get() = field
@@ -10,7 +12,7 @@ class SmartDevice {
 
 class ConstructorExample(private val param1: String) {
     init {
-        println("init is called.")
+        Logging.LOGGER.info("init is called.")
     }
 
     // First secondary constructor
@@ -18,8 +20,7 @@ class ConstructorExample(private val param1: String) {
         param1: String,
         param2: String
     ) : this(param1) {
-
-        println("Second constructor is called")
+        Logging.LOGGER.info("Second constructor is called")
     }
 
     // Second secondary constructor
@@ -29,7 +30,7 @@ class ConstructorExample(private val param1: String) {
         param3: String
     ) : this(param1) {
 
-        println("Third constructor is called")
+        Logging.LOGGER.info("Third constructor is called")
     }
 }
 
@@ -42,11 +43,11 @@ class Person(firstName: String, lastName: String) {
 
     init {
         fullName = "$firstName $lastName"
-        println("Init block 1")
+        Logging.LOGGER.info("Init block 1")
     }
 
     init {
-        println("Init block 2")
+        Logging.LOGGER.info("Init block 2")
     }
 }
 
@@ -56,5 +57,6 @@ object Classes {
         smartDevice.brand = "new brand"
 
         val obj = ConstructorExample(param1 = "1", param2 = "2", param3 = "3")
+        Logging.LOGGER.info("Constructor example: $obj")
     }
 }

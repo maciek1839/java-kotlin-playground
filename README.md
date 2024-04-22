@@ -1,5 +1,12 @@
 # Java & Kotlin playground
 
+| Branch |                                                                                            Pipeline                                                                                            |                                                                                         Code coverage                                                                                          |                                       Jacoco test report                                        |                                 SonarCloud                                 |
+|:------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------:|
+|  main  | [![pipeline status](https://gitlab.com/ShowMeYourCodeYouTube/java-kotlin-playground/badges/main/pipeline.svg)](https://gitlab.com/ShowMeYourCodeYouTube/java-kotlin-playground/-/commits/main) | [![coverage report](https://gitlab.com/ShowMeYourCodeYouTube/java-kotlin-playground/badges/main/coverage.svg)](https://gitlab.com/ShowMeYourCodeYouTube/java-kotlin-playground/-/commits/main) | [link](https://showmeyourcodeyoutube.gitlab.io/java-kotlin-playground/jacoco-report/index.html) | [link](https://sonarcloud.io/organizations/showmeyourcodeyoutube/projects) |
+
+---
+
+
 Releases overview with code samples and language specific features.
 
 Below you can find some references to interesting parts of documentation:
@@ -27,7 +34,9 @@ Reference: https://aws.amazon.com/what-is/java/
 
 [Reference](https://www.geeksforgeeks.org/data-types-in-java/)
 
-Every class in java implicitly extends java.lang.Object class. So Object class is at the top level of inheritance hierarchy in java. [Inheritance in Java Example](https://www.digitalocean.com/community/tutorials/inheritance-java-example)
+Every class in java implicitly extends java.lang.Object class. So Object class is at the top level of inheritance hierarchy in java.
+
+[Inheritance in Java Example](https://www.digitalocean.com/community/tutorials/inheritance-java-example)
 
 ## Kotlin
 

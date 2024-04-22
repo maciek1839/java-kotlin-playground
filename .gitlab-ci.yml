@@ -30,14 +30,15 @@ test:
   stage: test
   script:
     - ': script'
-    - ./gradlew check
+    - ./gradlew check sonar
+    - cat coverage-report/build/reports/jacoco/testCodeCoverageReport/html/index.html | grep -o '<tfoot>.*</tfoot>'
   coverage: '/Total.*?([0-9]{1,3})%/'
   artifacts:
     paths:
-      - "**/build/reports/tests/test/**"
+      - coverage-report/build/reports/jacoco/testCodeCoverageReport/html/**
     reports:
       junit:
-        - "**/build/test-results/TEST-*.xml"
+        - "**/build/test-results/test/TEST-*.xml"
     expire_in: 1 hour
 
 build-package:
@@ -55,7 +56,8 @@ sonarcloud-check:
     key: "${CI_JOB_NAME}"
     paths:
       - .sonar/cache
-  script: ./gradlew check sonar
+  script:
+    - ./gradlew check sonar
   only:
     - merge_requests
     - main
@@ -66,8 +68,7 @@ pages:
     - echo 'Cleaning old pages'
     - rm -rf public
     - ls -la
-    # - mkdir -p public/jacoco-report && cp -r build/reports/jacoco/test/html/* public/jacoco-report
-    - mkdir -p public/gradle-report && cp -r java/build/reports/tests/test/* public/gradle-report
+    - mkdir -p public/jacoco-report && cp -r coverage-report/build/reports/jacoco/testCodeCoverageReport/html/* public/jacoco-report
     - echo 'Public directory content after copying files'
     - ls -la ./public
   artifacts:
