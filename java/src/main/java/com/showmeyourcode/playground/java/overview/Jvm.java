@@ -12,9 +12,10 @@ public class Jvm {
         LOGGER.info(Descriptions.header("JVM specific"));
 
         LOGGER.info("""
-                ====> The Java string constant pool is an area in heap memory where Java stores literal string values.
+                {} The Java string constant pool is an area in heap memory where Java stores literal string values.
                 Heap space is used for the dynamic memory allocation of Java objects and classes at runtime
-                """
+                """,
+                Descriptions.INDENT1
         );
     }
 }

@@ -6,8 +6,7 @@ import com.showmeyourcode.playground.java.overview.Jvm;
 import com.showmeyourcode.playground.java.overview.LanguageFeatures;
 import com.showmeyourcode.playground.java.overview.datatype.Datatypes;
 import com.showmeyourcode.playground.java.overview.exception.Exceptions;
-import com.showmeyourcode.playground.java.overview.release.Jdk17;
-import com.showmeyourcode.playground.kotlin.common.Descriptions;
+import com.showmeyourcode.playground.java.overview.release.JavaReleases;
 import com.showmeyourcode.playground.kotlin.common.Logging;
 import org.slf4j.Logger;
 
@@ -31,6 +30,6 @@ public class Application {
         Samples.main();
 
         // releases
-        Jdk17.main();
+        JavaReleases.main();
     }
 }

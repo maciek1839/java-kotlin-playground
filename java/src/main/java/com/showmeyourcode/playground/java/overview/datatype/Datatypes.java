@@ -19,7 +19,7 @@ public class Datatypes {
     }
 
     private static void rawType() {
-        LOGGER.info("\n====> Raw Type");
+        LOGGER.info("\n{} Raw Type", Descriptions.INDENT1);
         LOGGER.info("If the actual type argument is omitted, you create a raw type of Box<T>: Box rawBox = new Box();");
         LOGGER.info("A list is a raw type, while List<String> is a parameterized type.");
         LOGGER.info("""
@@ -40,7 +40,7 @@ public class Datatypes {
     }
 
     private static void typeInference() {
-        LOGGER.info("\n====> Type Inference");
+        LOGGER.info("\n{} Type Inference", Descriptions.INDENT1);
         LOGGER.info("Java does have type inferencing when using generics.");
         LOGGER.info("""
                 With var , the Java compiler infers the type of the variable at compile time, 
@@ -65,7 +65,7 @@ public class Datatypes {
 
     private static void signedUnsignedVariables() {
         // https://stackoverflow.com/questions/21089540/signed-and-unsigned-data-types-in-java
-        LOGGER.info("\n====> Signed/Unsigned variables");
+        LOGGER.info("\n{} Signed/Unsigned variables", Descriptions.INDENT1);
         LOGGER.info("Signed variables, such as signed integers will allow you to represent numbers both in the positive and negative ranges.");
         LOGGER.info("Unsigned variables, such as unsigned integers, will only allow you to represent numbers in the positive.\n");
 

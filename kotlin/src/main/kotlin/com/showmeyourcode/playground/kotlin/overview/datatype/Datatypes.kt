@@ -73,7 +73,7 @@ object Datatypes {
 
     private fun signedUnsignedVariables() {
         // https://www.baeldung.com/kotlin/unsigned-integers
-        Logging.LOGGER.info("\n====> Signed/Unsigned variables")
+        Logging.LOGGER.info("\n{} Signed/Unsigned variables", Descriptions.INDENT1)
         Logging.LOGGER.info("As of Kotlin 1.3, Kotlin supports unsigned integers to accommodate this requirement.")
 
         val uByte: UByte = 42u

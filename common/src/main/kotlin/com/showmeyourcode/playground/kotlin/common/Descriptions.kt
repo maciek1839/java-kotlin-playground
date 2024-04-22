@@ -20,6 +20,10 @@ object Descriptions {
     const val LANGUAGE_FEATURES = "LANGUAGE FEATURES"
     const val CODE_SAMPLES = "CODE SAMPLES"
 
+    const val INDENT1 = "====>"
+    const val INDENT2 = "==>"
+    const val INDENT3 = ">"
+
     // https://press.rebus.community/programmingfundamentals/chapter/data-types/
     const val DATA_TYPE =
         "A data type is a classification of data which tells the compiler or interpreter \n" +

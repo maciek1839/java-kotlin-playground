@@ -13,7 +13,7 @@ public class LanguageFeatures {
         LOGGER.info(Descriptions.header(Descriptions.LANGUAGE_FEATURES));
         LOGGER.info("Below some Java features/syntax good to know:");
 
-        LOGGER.info("\n====>  Ternary operator");
+        LOGGER.info("\n{}  Ternary operator", Descriptions.INDENT1);
         LOGGER.info("variable = (condition) ? expressionTrue :  expressionFalse");
     }
 }

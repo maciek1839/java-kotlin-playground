@@ -1,5 +1,7 @@
 package com.showmeyourcode.playground.java.code;
 
+import com.showmeyourcode.playground.kotlin.common.Descriptions;
+
 import static com.showmeyourcode.playground.java.Application.LOGGER;
 
 public class Classes {
@@ -7,7 +9,7 @@ public class Classes {
     private Classes(){}
 
     public static void main() {
-        LOGGER.info("\n====> Classes");
+        LOGGER.info("\n{} Classes", Descriptions.INDENT1);
         // https://en.wikipedia.org/wiki/Class_(computer_programming)
         LOGGER.info("""
                 A class is an extensible program-code-template for creating objects,

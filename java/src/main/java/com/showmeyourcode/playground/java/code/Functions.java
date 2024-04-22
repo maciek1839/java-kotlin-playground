@@ -1,5 +1,7 @@
 package com.showmeyourcode.playground.java.code;
 
+import com.showmeyourcode.playground.kotlin.common.Descriptions;
+
 import static com.showmeyourcode.playground.java.Application.LOGGER;
 
 public class Functions {
@@ -7,7 +9,7 @@ public class Functions {
     private Functions(){}
 
     public static void main(){
-        LOGGER.info("====> Functions");
+        LOGGER.info("{} Functions", Descriptions.INDENT1);
         LOGGER.info("A function is a block of organized, reusable code that is used to perform a single, related action.");
 
         LOGGER.info("\n==> Anonymous functions");

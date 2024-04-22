@@ -57,6 +57,7 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
+    - ': script'
     - ./gradlew check sonar
   only:
     - merge_requests

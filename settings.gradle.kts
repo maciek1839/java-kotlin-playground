@@ -1,4 +1,4 @@
-rootProject.name = "java-kotlin"
+rootProject.name = "Java & Kotlin playground"
 
 include(":common")
 include(":coverage-report")

@@ -7,11 +7,11 @@ object Equality {
     fun main() {
         Logging.LOGGER.info("\n${Descriptions.EQUALITY_HEADER}")
         // https://medium.com/@humzakhalid94/understanding-and-equals-in-kotlin-a-comparison-with-code-examples-9da0272e4a94
-        Logging.LOGGER.info("\n====> (Equality Operator)")
+        Logging.LOGGER.info("\n{} (Equality Operator)", Descriptions.INDENT1)
         Logging.LOGGER.info("The '==' operator is used to check for structural equality between objects.")
         Logging.LOGGER.info("It compares the values of the objects rather than their references.")
 
-        Logging.LOGGER.info("\n====> (Reference Equality Operator)")
+        Logging.LOGGER.info("\n{} (Reference Equality Operator)", Descriptions.INDENT1)
         Logging.LOGGER.info(
             """
             The '===' operator, also known as the reference equality operator, compares object references. 

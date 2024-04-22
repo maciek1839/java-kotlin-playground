@@ -19,7 +19,7 @@ object LanguageFeatures {
     private fun singleExpressionFunctions() {
         // https://kotlintutorial.io/single-expression-functions/
         // https://kotlinlang.org/docs/functions.html#single-expression-functions
-        Logging.LOGGER.info("\n====> Single-expression functions")
+        Logging.LOGGER.info("\n{} Single-expression functions", Descriptions.INDENT1)
         Logging.LOGGER.info(
             """
             Single-line functions (also known as single-expression functions) in Kotlin are functions
@@ -30,7 +30,7 @@ object LanguageFeatures {
 
     private fun destructingDeclarations() {
         // https://kotlinlang.org/docs/destructuring-declarations.html
-        Logging.LOGGER.info("\n====> Destructuring declarations")
+        Logging.LOGGER.info("\n{} Destructuring declarations", Descriptions.INDENT1)
         Logging.LOGGER.info(
             "Sometimes it is convenient to destructure an object into a number of variables, for example:"
         )
@@ -58,7 +58,7 @@ object LanguageFeatures {
     }
 
     private fun operatorOverloading() {
-        Logging.LOGGER.info("\n====> Operator overloading")
+        Logging.LOGGER.info("\n{} Operator overloading", Descriptions.INDENT1)
         Logging.LOGGER.info(
             "Kotlin allows you to provide custom implementations for the predefined set of operators on types."
         )
@@ -74,7 +74,7 @@ object LanguageFeatures {
     }
 
     private fun lazyLoading() {
-        Logging.LOGGER.info("\n====>  lazy loading")
+        Logging.LOGGER.info("\n{} lazy loading", Descriptions.INDENT1)
         // https://stackoverflow.com/questions/36623177/property-initialization-using-by-lazy-vs-lateinit
         Logging.LOGGER.info("The Kotlin language has built-in support for lazy initialization.")
         Logging.LOGGER.info(
@@ -124,7 +124,7 @@ object LanguageFeatures {
     }
 
     private fun nullSafety() {
-        Logging.LOGGER.info("\n====>  null safety")
+        Logging.LOGGER.info("\n{} null safety", Descriptions.INDENT1)
         Logging.LOGGER.info("It is a way to indicate which variables can possibly hold a null value.")
         Logging.LOGGER.info("Kotlin's type system is aimed at eliminating the danger of null references")
     }
@@ -136,7 +136,7 @@ object LanguageFeatures {
             an operator is a character that represents a specific mathematical or logical action or process.
             """.trimIndent()
         )
-        Logging.LOGGER.info("\n====>  Elvis operator")
+        Logging.LOGGER.info("\n{} Elvis operator", Descriptions.INDENT1)
         Logging.LOGGER.info(
             """
             |The Elvis operator ?: is a binary operator that returns its first operand if that operand is true,
