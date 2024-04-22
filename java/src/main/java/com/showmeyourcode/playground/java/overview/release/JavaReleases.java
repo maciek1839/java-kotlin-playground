@@ -16,9 +16,12 @@ public class JavaReleases {
                 Fo instance, Java SE 8, 11, 17, 21, 25 are LTS releases.
                 Oracle intends to make future LTS releases every two years.
                 
+                A Java LTS version, or long term support version,
+                is a Java version that will remain the industry standard for several years.
+                
                 https://www.oracle.com/java/technologies/java-se-support-roadmap.html
                 
-                endoflife.date track JDK releases and support dates: https://endoflife.date/oracle-jdk
+                The website endoflife.date track JDK releases and support dates: https://endoflife.date/oracle-jdk
                 """);
         Jdk17.main();
         Jdk11.main();

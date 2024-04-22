@@ -1,0 +1,55 @@
+# Java release
+
+- JDK 21
+    - String templates
+    - Record patterns
+    - Pattern matching for switch
+    - Virtual threads
+- JDK 17
+    - Switch expressions
+    - Sealed classes
+        - Sealed classes let you restrict or permit class hierarchies to only certain types.
+        - This is incredibly useful for pattern matching as you have a specific number of classes to switch between.
+    - Pattern matching (instanceof)
+    - Records
+        - A record can neither extend a class nor it can be extended by another class. It’s a final class.
+        - Declared fields are private and final.
+    - Text blocks
+    - Better handling of NullPointerException
+    - Compact Number Formatting Support
+- JDK 11
+    - A No-Op Garbage Collector / Epsilon
+    - Removed deprecated modules e.g. Java EE and CORBA
+- JDK 10
+    - Local Variable Type Inference (var)
+    - Unmodifiable Collections (List.copyOf)
+        - The `Collections.unmodifiableList` method returns an unmodifiable view of the source List.
+        - So if the source List is modified, these changes are reflected in the unmodifiable List.
+        - The `copyOf` methods on the other hand, return a read-only copy of the source collection.
+    - Container Awareness
+        - Extract container-specific configuration instead of querying the operating system itself.
+- JDK  9
+    - Modular System – Jigsaw Project
+    - Diamond Operator Extension
+        - Use diamond operator in conjunction with anonymous inner classes.
+    - Try-With-Resources
+    - Interface Private Method
+    - Compact strings
+        - A Java String (before Java 9) is represented internally in the Java VM using bytes, encoded as UTF-16.
+        - UTF-16 uses 2 bytes to represent a single character.
+        - From Java 9 and forward, The Java VM can optimize strings using a new Java feature called compact strings.
+        - The compact strings feature lets the Java VM detect if a string only contains ISO-8859-1/Latin-1 characters.
+        - If it does, the String will only use 1 byte per character internally.
+- JDK  8
+    - Lambda expressions
+    - Method references
+    - Functional interfaces
+    - Stream API
+    - Default methods
+    - Static methods in interface
+    - Optional class
+
+---
+
+Other references:
+- https://en.wikipedia.org/wiki/Java_version_history
