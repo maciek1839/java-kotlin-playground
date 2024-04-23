@@ -1,13 +1,10 @@
 # Java release
 
 - JDK 21
-    - String templates
-    - Record patterns
-    - Pattern matching for switch
-      - 
-    - Virtual threads
-      - .
-    - Sequenced collections
+  - Pattern matching for switch
+  - Sequenced collections
+  - Record patterns
+  - Virtual threads
 - JDK 17
     - Sealed classes
         - Sealed classes let you restrict or permit class hierarchies to only certain types.
@@ -15,7 +12,6 @@
     - Pattern matching (instanceof)
     - Records
         - A record can neither extend a class nor it can be extended by another class. It’s a final class.
-        - Declared fields are private and final.
     - Text blocks
     - Better handling of NullPointerException
       - In Java 17 the exception pinpoints out where and what our null object reference is.

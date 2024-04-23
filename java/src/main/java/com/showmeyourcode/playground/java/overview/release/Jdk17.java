@@ -13,7 +13,7 @@ public class Jdk17 {
     }
 
     public static void main() {
-        LOGGER.info("{} JDK 17", Descriptions.INDENT1);
+        LOGGER.info("\n{} JDK 17", Descriptions.INDENT1);
         LOGGER.info("JDK 17 reached General Availability on 14th September 2021.");
         LOGGER.info("https://www.oracle.com/java/technologies/javase/17-relnote-issues.html");
         sealedClasses();
@@ -119,7 +119,6 @@ public class Jdk17 {
         }
     }
 }
-// https://docs.oracle.com/en/java/javase/17/language/pattern-matching.html
 
 sealed class Animal permits Cat, Dog, Kangaroo {
     private String name;

@@ -1,6 +1,14 @@
 <configuration>
 
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="CONSOLE-FULL" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36}: %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="CONSOLE-ONLY-MESSAGE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
                 %msg%n
@@ -9,7 +17,7 @@
     </appender>
 
     <root level="info">
-        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="CONSOLE-ONLY-MESSAGE"/>
     </root>
 
 </configuration>
