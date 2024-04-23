@@ -30,7 +30,12 @@ class ConstructorExample(private val param1: String) {
         param3: String
     ) : this(param1) {
 
-        Logging.LOGGER.info("Third constructor is called")
+        Logging.LOGGER.info(
+            "Third constructor is called with arguments: {} {} {}",
+            param1,
+            param2,
+            param3
+        )
     }
 }
 

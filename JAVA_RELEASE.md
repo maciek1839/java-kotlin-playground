@@ -4,9 +4,11 @@
     - String templates
     - Record patterns
     - Pattern matching for switch
+      - 
     - Virtual threads
+      - .
+    - Sequenced collections
 - JDK 17
-    - Switch expressions
     - Sealed classes
         - Sealed classes let you restrict or permit class hierarchies to only certain types.
         - This is incredibly useful for pattern matching as you have a specific number of classes to switch between.
@@ -16,6 +18,7 @@
         - Declared fields are private and final.
     - Text blocks
     - Better handling of NullPointerException
+      - In Java 17 the exception pinpoints out where and what our null object reference is.
     - Compact Number Formatting Support
 - JDK 11
     - A No-Op Garbage Collector / Epsilon

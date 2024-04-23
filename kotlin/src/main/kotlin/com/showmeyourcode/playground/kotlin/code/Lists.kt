@@ -14,5 +14,7 @@ object Lists {
                 2,
                 'f'
             )
+
+        Logging.LOGGER.info("mixed types: {}", mixedTypes)
     }
 }

@@ -23,6 +23,7 @@ public class JavaReleases {
                 
                 The website endoflife.date track JDK releases and support dates: https://endoflife.date/oracle-jdk
                 """);
+        Jdk21.main();
         Jdk17.main();
         Jdk11.main();
         Jdk8.main();
