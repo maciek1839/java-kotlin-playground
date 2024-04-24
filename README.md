@@ -71,6 +71,12 @@ Objects are created at runtime from templates, which are also known as classes.
 [Reference1](https://stackoverflow.com/questions/45453376/what-does-object-identity-mean-in-java)
 [Reference2](https://www.techopedia.com/definition/24339/java-object)
 
+### Project Loom
+
+Project Loom introduces the concept of Virtual Threads to Java's runtime and will be available as a stable feature in JDK 21. [Reference](https://softwaremill.com/what-is-blocking-in-loom/)
+
+*See more in code samples.*
+
 ## Kotlin
 
 > Kotlin is a multiplatform, statically typed, general-purpose programming language. Kotlin took inspiration from many programming languages, including (but not limited to) Java, Scala, C# and Groovy. One of the main ideas behind Kotlin is being pragmatic, i.e., being a programming language useful for day-to-day development, which helps the users get the job done via its features and its tools. Reference: https://kotlinlang.org/spec/kotlin-spec.html
@@ -87,10 +93,67 @@ Learning materials:
 
 ![img](images/kotlin-compiler.png)
 
-[Reference](https://kt.academy/article/ak-compiler-plugin)
+[Reference1](https://kt.academy/article/ak-compiler-plugin)
+
+[Reference2](https://github.com/ahinchman1/Kotlin-Compiler-Crash-Course)
+
+There are two frontends, k1 and k2. K2, otherwise known as FIR frontend. 
+
+In compilers, the frontend translates a computer programming source code into an intermediate representation, and the backend works with the intermediate representation to produce code in a computer output language.
 
 ### Data types
 
 ![img](images/kotlin-datatypes.png)
 
 [Reference](https://medium.com/@m.sandovalcalvo/kotlin-type-system-unveiling-the-mystery-50613f0db893)
+
+### Coroutines
+
+A coroutine is an instance of a suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code.
+
+However, a coroutine is not bound to any particular thread.
+It may suspend its execution in one thread and resume in another one.
+
+Coroutines always execute in some context that is a set of various elements.
+The context is a holder of data that is needed for the coroutine. The main elements are:
+- Job – models a cancellable workflow with multiple states and a life-cycle that culminates in its completion
+- Dispatcher – determines what thread or threads the corresponding coroutine uses for its execution. With the dispatcher, we can confine coroutine execution to a specific thread, dispatch it to a thread pool, or let it run unconfined
+  - Kotlin provides several implementations of CoroutineDispatcher that we can pass to the CoroutineContext
+    - Dispatchers.Default uses a shared thread pool on the JVM. By default, the number of threads is equal to the number of CPUs available on the machine. 
+    - Dispatchers.IO is designed to offload blocking IO operations to a shared thread pool. 
+    - Dispatchers.Main is present only on platforms that have main threads, such as Android and iOS. 
+    - Dispatchers.Unconfined doesn’t change the thread and launches the coroutine in the caller thread. The important thing here is that after suspension, it resumes the coroutine in the thread that was determined by the suspending function.
+
+To launch a coroutine, we need to use a coroutine builder like launch or async.
+These builder functions are actually extensions of the CoroutineScope interface:
+- GlobalScope (async,launch)
+  - The lifecycle of this scope is tied to the lifecycle of the whole application. This means that the scope will stop running either after all of its coroutines have been completed or when the application is stopped.
+  - It’s worth mentioning that coroutines launched using GlobalScope do not keep the process alive. They behave similarly to daemon threads. So, even when the application stops, some active coroutines will still be running. This can easily create resource or memory leaks.
+  - async is designed to perform something in the background and return a result, while launch is designed to perform an action in the background without necessarily returning a result (Just Fire It and Forget).
+- runBlocking
+  - It creates a scope and runs a coroutine in a blocking way.
+  - This means it blocks the current thread until all children's coroutines complete their executions.
+  - It is not recommended to use this scope because threads are expensive and will depreciate all the benefits of coroutines.
+
+coroutines vs suspend functions:
+- Coroutine
+  - Start to finish of what happens inside a ‘scope.launch { }’.
+- Suspend fun
+  - A function that can suspend its own execution, a single small part of the larger coroutine.
+  - It should be called only from a coroutine or another suspend function.
+
+`Structured concurrency` refers to a way to structure async computations so that child operations are guaranteed to complete before their parents, just the way a function is guaranteed to complete before its caller. [Reference](https://ericniebler.com/2020/11/08/structured-concurrency/)
+
+Loom vs Coroutines
+- Loom can improve the performance applications: it can run multiple virtual threads and it costs less to have blocked virtual threads than to have a regular threads blocked. -Kotlin coroutines are intrusive because we cannot call suspend functions in normal function, which is not the case of Loom
+- Structured concurrency is much more easier with Kotlin coroutines than Loom.
+- Interoperability between Kotlin coroutines and reactive programming are more simpler as we can just use flows than the one between loom and reactive programming.
+[Reference](https://stackoverflow.com/questions/77053797/java-virtual-threads-vs-kotlin-coroutines)
+
+
+References:
+- https://www.baeldung.com/kotlin/threads-coroutines
+- https://kt.academy/article/cc-coroutine-context
+- https://www.baeldung.com/kotlin/coroutines-scope-vs-context
+- https://kt.academy/article/cc-use-scope-vs-suspend
+- https://medium.com/@erik.antonyan1994/understanding-structured-concurrency-in-kotlin-coroutines-5693f941a898

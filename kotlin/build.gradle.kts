@@ -2,6 +2,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
 }
 
+val coroutinesVersion: String = "1.8.0"
 val arrowVersion: String = "1.2.0"
 val kotestVersion: String = "5.7.2"
 val arrowTestVersion: String = "1.4.0"
@@ -16,7 +17,9 @@ kotlin {
 dependencies {
     api(project(":common"))
 
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")

@@ -14,5 +14,6 @@ public class Samples {
         Lists.main();
         Classes.main();
         Functions.main();
+        Futures.main();
     }
 }

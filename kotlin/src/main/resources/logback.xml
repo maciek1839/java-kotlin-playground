@@ -20,4 +20,8 @@
         <appender-ref ref="CONSOLE-ONLY-MESSAGE"/>
     </root>
 
+    <logger name="com.showmeyourcode.playground.kotlin.code" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE-FULL" />
+    </logger>
+
 </configuration>

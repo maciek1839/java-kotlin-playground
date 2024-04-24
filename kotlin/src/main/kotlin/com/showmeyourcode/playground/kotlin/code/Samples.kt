@@ -10,5 +10,6 @@ object Samples {
         Ranges.main()
         Arrays.main()
         Lists.main()
+        Coroutines.main()
     }
 }
