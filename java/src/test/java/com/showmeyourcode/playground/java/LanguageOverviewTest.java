@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class ApplicationTest {
+class LanguageOverviewTest {
 
     @Test
-    void shouldInitializeClassInstance(){
+    void shouldRunApplicationWithoutErrors(){
         assertDoesNotThrow(() ->
-                Application.main(new String[0])
+                LanguageOverview.main(new String[0])
         );
     }
 }

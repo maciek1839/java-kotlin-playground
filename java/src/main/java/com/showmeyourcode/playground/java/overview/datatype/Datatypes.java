@@ -2,7 +2,7 @@ package com.showmeyourcode.playground.java.overview.datatype;
 
 import com.showmeyourcode.playground.kotlin.common.Descriptions;
 
-import static com.showmeyourcode.playground.java.Application.LOGGER;
+import static com.showmeyourcode.playground.java.LanguageOverview.LOGGER;
 
 public class Datatypes {
 

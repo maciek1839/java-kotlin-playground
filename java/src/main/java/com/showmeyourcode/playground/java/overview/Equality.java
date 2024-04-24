@@ -4,7 +4,7 @@ import com.showmeyourcode.playground.kotlin.common.Descriptions;
 
 import java.util.Objects;
 
-import static com.showmeyourcode.playground.java.Application.LOGGER;
+import static com.showmeyourcode.playground.java.LanguageOverview.LOGGER;
 
 public class Equality {
 

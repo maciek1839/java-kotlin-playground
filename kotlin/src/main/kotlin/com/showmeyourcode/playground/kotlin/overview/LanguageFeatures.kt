@@ -14,6 +14,62 @@ object LanguageFeatures {
         operatorOverloading()
         destructingDeclarations()
         singleExpressionFunctions()
+        dataClass()
+        inlineClasses()
+    }
+
+    private fun dataClass() {
+        // https://medium.com/@pritik.jain/data-class-vs-normal-class-in-kotlin-6ed2b36edcae
+        Logging.LOGGER.info("\n{} Data class", Descriptions.INDENT1)
+        Logging.LOGGER.info("Data classes in Kotlin are primarily used to hold data.")
+
+        Logging.LOGGER.info(
+            """
+            Differences between data classes and normal classes:
+            - A data class must be declared with at least one primary constructor parameter which must be declared with val or var. 
+              A normal class can be defined with or without a parameter in its constructor.
+            - Data classes have default implementations for the following methods using only properties 
+              that were declared in the primary constructor; toString(), hashCode(), copy(), componentN(), equals().
+              Implementation for those methods can be written in normal classes using properties that were 
+              and were not declared in the primary constructor.
+            - A data class cannot be extended by another class. 
+              They are final classes by default. Normal classes can be extended by other classes, including data classes.
+              Certain conditions should however be met.
+            - Data classes cannot be sealed, open, abstract or inner. Normal classes can be any of these.
+            """.trimIndent()
+        )
+    }
+
+    private fun inlineClasses() {
+        // https://kotlinlang.org/docs/inline-classes.html
+        // https://hyperskill.org/learn/step/26475
+        Logging.LOGGER.info("\n{} Inline classes", Descriptions.INDENT1)
+        Logging.LOGGER.info(
+            """
+            Sometimes it is useful to wrap a value in a class to create a more domain-specific type.
+            However, it introduces runtime overhead due to additional heap allocations.
+            Moreover, if the wrapped type is primitive, the performance hit is significant,
+            because primitive types are usually heavily optimized by the runtime,
+            while their wrappers don't get any special treatment.
+            
+            To solve such issues, Kotlin introduces a special kind of class called an inline class.
+            Inline classes are a subset of value-based classes. They don't have an identity and can only hold values.
+            
+            An inline class must have a single property initialized in the primary constructor. 
+            At runtime, instances of the inline class will be represented using this single property.
+            
+            Since the code of an inline function is inserted directly into the calling code, 
+            there is no need to create an additional function object.
+            Inline functions in Kotlin offer valuable benefits,
+            including improved performance and enhanced code readability. 
+            
+            data class is a fully featured class with additional goodies.
+            value class is a named, unmodifiable tuple without identity.
+            """.trimIndent()
+        )
+
+        val password = Password("Don't try this in production")
+        Logging.LOGGER.info("Inline class value: {}", password)
     }
 
     private fun singleExpressionFunctions() {
@@ -159,4 +215,14 @@ data class Complex(val real: Double, val imaginary: Double) {
             real = real - another.real,
             imaginary = imaginary - another.imaginary
         )
+}
+
+data class PasswordDataClass(val s: String, val secondProperty: String)
+
+// An inline class must have a single property initialized in the primary constructor.
+@JvmInline
+value class Password(private val s: String) {
+    fun exampleMethod(value: Int): Int {
+        return value
+    }
 }

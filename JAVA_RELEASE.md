@@ -1,11 +1,11 @@
 # Java release
 
-- JDK 21
+- [JDK 21](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html) | 19th September 2023
   - Pattern matching for switch
   - Sequenced collections
   - Record patterns
   - Virtual threads
-- JDK 17
+- [JDK 17](https://www.oracle.com/java/technologies/javase/17-relnote-issues.html) | 14th September 2021
     - Sealed classes
         - Sealed classes let you restrict or permit class hierarchies to only certain types.
         - This is incredibly useful for pattern matching as you have a specific number of classes to switch between.
@@ -16,7 +16,7 @@
     - Better handling of NullPointerException
       - In Java 17 the exception pinpoints out where and what our null object reference is.
     - Compact Number Formatting Support
-- JDK 11
+- [JDK 11](https://www.oracle.com/java/technologies/javase/11-relnote-issues.html) | 25th September 2018
     - A No-Op Garbage Collector / Epsilon
     - Removed deprecated modules e.g. Java EE and CORBA
 - JDK 10
@@ -27,7 +27,7 @@
         - The `copyOf` methods on the other hand, return a read-only copy of the source collection.
     - Container Awareness
         - Extract container-specific configuration instead of querying the operating system itself.
-- JDK  9
+- JDK 9
     - Modular System – Jigsaw Project
     - Diamond Operator Extension
         - Use diamond operator in conjunction with anonymous inner classes.
@@ -39,7 +39,7 @@
         - From Java 9 and forward, The Java VM can optimize strings using a new Java feature called compact strings.
         - The compact strings feature lets the Java VM detect if a string only contains ISO-8859-1/Latin-1 characters.
         - If it does, the String will only use 1 byte per character internally.
-- JDK  8
+- [JDK  8](https://www.oracle.com/java/technologies/javase/8-whats-new.html)
     - Lambda expressions
     - Method references
     - Functional interfaces
@@ -50,5 +50,5 @@
 
 ---
 
-Other references:
+References:
 - https://en.wikipedia.org/wiki/Java_version_history

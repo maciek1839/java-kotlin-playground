@@ -6,17 +6,16 @@ import com.showmeyourcode.playground.java.overview.Jvm;
 import com.showmeyourcode.playground.java.overview.LanguageFeatures;
 import com.showmeyourcode.playground.java.overview.datatype.Datatypes;
 import com.showmeyourcode.playground.java.overview.exception.Exceptions;
-import com.showmeyourcode.playground.java.overview.release.JavaReleases;
 import com.showmeyourcode.playground.kotlin.common.Logging;
 import org.slf4j.Logger;
 
-public class Application {
+public class LanguageOverview {
 
     public static final Logger LOGGER = Logging.INSTANCE.getLOGGER();
 
     @SuppressWarnings("unused")
     public static void main(String[] args) {
-        LOGGER.info("\nStarting Java Playground Application...\n");
+        LOGGER.info("\nStarting Java Language Overview...\n");
 
         LanguageFeatures.main();
 
@@ -28,8 +27,5 @@ public class Application {
 
         // code samples
         Samples.main();
-
-        // releases
-        JavaReleases.main();
     }
 }
