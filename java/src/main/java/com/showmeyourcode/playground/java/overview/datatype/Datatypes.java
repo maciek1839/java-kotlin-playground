@@ -55,12 +55,12 @@ public class Datatypes {
         LOGGER.info("They have no methods and no complementary properties.");
         LOGGER.info("Also, you can't do much with them other than inspect their value or perhaps change the value that they hold.");
         LOGGER.info("But they are not, by any means, objects.\n");
-        LOGGER.info("Object == 1.2L:       " + false);
-        LOGGER.info("Object == \"String\":   " + ("String" instanceof Object));
-        LOGGER.info("Object == 'a':        " + false);
-        LOGGER.info("Object == 'int[]':    " + (new int[]{1, 2, 3} instanceof Object));
-        LOGGER.info("Object == 'Integer':  " + (Integer.valueOf(1) instanceof Object));
-        LOGGER.info("Object == 'Integer':  " + (Integer.valueOf(1) instanceof Object));
+        LOGGER.info("Object == 1.2L:       {}", false);
+        LOGGER.info("Object == \"String\":   {}", "String" instanceof Object);
+        LOGGER.info("Object == 'a':        {}", false);
+        LOGGER.info("Object == 'int[]':    {}", new int[]{1, 2, 3} instanceof Object);
+        LOGGER.info("Object == 'Integer':  {}", Integer.valueOf(1) instanceof Object);
+        LOGGER.info("Object == 'Integer':  {}", Integer.valueOf(1) instanceof Object);
     }
 
     private static void signedUnsignedVariables() {

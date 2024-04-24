@@ -19,9 +19,10 @@ allprojects{
         mavenCentral()
     }
 
-    tasks.withType<JavaCompile> {
-        sourceCompatibility = "21"
-        targetCompatibility = "21"
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
     }
 
     sonar {

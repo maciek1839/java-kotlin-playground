@@ -1,5 +1,4 @@
 plugins {
-    kotlin("jvm")
     id("org.jlleitschuh.gradle.ktlint")
 }
 
@@ -7,6 +6,12 @@ val arrowVersion: String = "1.2.0"
 val kotestVersion: String = "5.7.2"
 val arrowTestVersion: String = "1.4.0"
 val mockkVersion: String = "1.13.9"
+
+kotlin {
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 dependencies {
     api(project(":common"))
