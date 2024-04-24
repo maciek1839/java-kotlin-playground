@@ -10,7 +10,7 @@ plugins {
 
 allprojects{
     group = "com.showmeyourcode.playground"
-    version = "0.0.1-SNAPSHOT"
+    version = "0.0.1"
 
     apply(plugin ="java")
     apply(plugin ="org.sonarqube")
