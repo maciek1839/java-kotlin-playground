@@ -24,8 +24,5 @@ public class LanguageOverview {
         Equality.main();
 
         Jvm.main();
-
-        // code samples
-        Samples.main();
     }
 }

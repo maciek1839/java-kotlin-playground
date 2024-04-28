@@ -15,5 +15,6 @@ public class Samples {
         Classes.main();
         Functions.main();
         Futures.main();
+        Concurrency.main();
     }
 }
