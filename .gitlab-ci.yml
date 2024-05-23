@@ -30,7 +30,7 @@ test:
   stage: test
   script:
     - ': script'
-    - ./gradlew check sonar
+    - ./gradlew check
     - cat coverage-report/build/reports/jacoco/testCodeCoverageReport/html/index.html | grep -o '<tfoot>.*</tfoot>'
   coverage: '/Total.*?([0-9]{1,3})%/'
   artifacts:

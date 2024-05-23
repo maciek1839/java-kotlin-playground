@@ -19,6 +19,9 @@ object Descriptions {
     val EQUALITY_HEADER = headerTemplate(EQUALITY)
     const val LANGUAGE_FEATURES = "LANGUAGE FEATURES"
     const val CODE_SAMPLES = "CODE SAMPLES"
+    const val PROGRAMMING_PARADIGMS = "Programming Paradigms"
+    const val FUNCTIONAL_PROGRAMMING = "Functional Programming"
+    const val DESIGN_PATTERNS = "Design Patterns"
 
     const val INDENT1 = "====>"
     const val INDENT2 = "==>"
@@ -32,4 +35,10 @@ object Descriptions {
     // https://www.tutorialspoint.com/java/java_exceptions.htm
     const val EXCEPTION =
         "An exception (or exceptional event) is a problem that arises during the execution of a program."
+
+    // https://medium.com/@Ariobarxan/what-is-a-programming-paradigm-ec6c5879952b
+    const val PROGRAMMING_PARADIGM = """
+        A programming paradigm is a fundamental approach or style of programming that provides a set of principles, concepts, and techniques for designing and implementing computer programs.
+        It defines the structure, organization, and flow of the code, as well as the methodologies for problem-solving and expressing computations.
+    """
 }
