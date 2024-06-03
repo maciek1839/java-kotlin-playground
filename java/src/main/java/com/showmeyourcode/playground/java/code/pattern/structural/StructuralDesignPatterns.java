@@ -8,5 +8,6 @@ public class StructuralDesignPatterns {
         Decorator.main();
         Facade.main();
         Proxy.main();
+        Party.main();
     }
 }

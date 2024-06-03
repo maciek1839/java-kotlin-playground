@@ -8,5 +8,9 @@ public class BehavioralDesignPatterns {
         Iterator.main();
         Mediator.main();
         Memento.main();
+        CircuitBreaker.main();
+        Strategy.main();
+        TemplateMethod.main();
+        Observer.main();
     }
 }
