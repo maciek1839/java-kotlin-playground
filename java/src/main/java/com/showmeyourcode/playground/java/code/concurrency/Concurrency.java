@@ -1,7 +1,8 @@
-package com.showmeyourcode.playground.java.code;
+package com.showmeyourcode.playground.java.code.concurrency;
 
 import com.showmeyourcode.playground.kotlin.common.Descriptions;
 
+import java.io.IOException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
@@ -263,6 +264,19 @@ public class Concurrency {
                 to changes in the other process(es) without doing any useful work
                 """);
 
+
+        countDownLatchDemo();
+    }
+
+    private static void countDownLatchDemo() {
+        LOGGER.info("=> CountDownLatch");
+        try {
+            CountDownLatchDemo.main(new String[]{});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void yieldSleepWaitJoin() {

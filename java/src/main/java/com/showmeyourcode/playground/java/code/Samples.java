@@ -1,6 +1,10 @@
 package com.showmeyourcode.playground.java.code;
 
+import com.showmeyourcode.playground.java.code.async.Futures;
+import com.showmeyourcode.playground.java.code.concurrency.Concurrency;
 import com.showmeyourcode.playground.java.code.paradigm.functional.FunctionalProgramming;
+import com.showmeyourcode.playground.java.code.paradigm.oop.ObjectOrientedProgramming;
+import com.showmeyourcode.playground.java.code.paradigm.prcedural.ProceduralProgramming;
 import com.showmeyourcode.playground.java.code.pattern.behavioral.BehavioralDesignPatterns;
 import com.showmeyourcode.playground.java.code.pattern.creational.CreationalDesignPatterns;
 import com.showmeyourcode.playground.java.code.pattern.structural.StructuralDesignPatterns;
@@ -24,6 +28,8 @@ public class Samples {
         LOGGER.info(Descriptions.header(Descriptions.PROGRAMMING_PARADIGMS));
         LOGGER.info(Descriptions.PROGRAMMING_PARADIGM);
         FunctionalProgramming.main();
+        ProceduralProgramming.main();
+        ObjectOrientedProgramming.main();
         LOGGER.info(Descriptions.header(Descriptions.DESIGN_PATTERNS));
         CreationalDesignPatterns.main();
         StructuralDesignPatterns.main();
