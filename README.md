@@ -9,6 +9,10 @@
 
 Releases overview with code samples and language specific features.
 
+Technology / Tools:
+- Java
+- Kotlin
+
 Below you can find some references to interesting parts of documentation:
 - [What Kotlin has that Java does not](https://kotlinlang.org/docs/comparison-to-java.html#what-kotlin-has-that-java-does-not)
 - [What Java has that Kotlin does not](https://kotlinlang.org/docs/comparison-to-java.html#what-java-has-that-kotlin-does-not)
@@ -157,3 +161,44 @@ References:
 - https://www.baeldung.com/kotlin/coroutines-scope-vs-context
 - https://kt.academy/article/cc-use-scope-vs-suspend
 - https://medium.com/@erik.antonyan1994/understanding-structured-concurrency-in-kotlin-coroutines-5693f941a898
+
+## Crack the code
+
+You can start practicing by doing exercises from the ``com.showmeyourcode.playground.java.code.task`` package.
+
+Data structures in Java/Kotlin: https://gitlab.com/ShowMeYourCodeYouTube/kotlin-java-data-structures
+
+---
+
+- https://neetcode.io
+  - https://neetcode.io/courses/lessons/big-o-notation
+  - https://neetcode.io/practice
+- https://www.amigoscode.com/
+- https://leetcode.com/problemset/all/
+- https://www.codewars.com/
+- https://skillotron.com/qualifications/java
+
+### Challenges
+
+- https://challengerocket.com/hackathons-and-challenges.html
+
+- Introduction to Computer Science using Java - Programming Tutorials
+  - http://chortle.ccsu.edu/java5/
+- Mathematical puzzle
+  - https://math.stackexchange.com/questions/2912164/choosing-office-hours-to-maximise-number-of-students-who-can-attend-at-least-one
+- geeksforgeeks.org
+  - https://www.geeksforgeeks.org/merge-sort/
+  - https://www.geeksforgeeks.org/binary-search-tree-data-structure/
+  - https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
+  - https://practice.geeksforgeeks.org/problems/reverse-array-in-groups0255/1
+
+### Puzzles
+
+- Mathematical puzzles
+  - https://math.stackexchange.com/questions/2912164/choosing-office-hours-to-maximise-number-of-students-who-can-attend-at-least-one
+
+## Useful articles
+
+Java:
+- https://dev.to/mjsf1234/mastering-java-concurrency-dive-into-part-1-291h#problem-with-thread-caching
+- https://dev.to/mjsf1234/mastering-java-concurrency-dive-into-part-2-39n3

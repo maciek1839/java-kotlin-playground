@@ -39,6 +39,7 @@ allprojects{
 val slf4jVersion = "1.7.30"
 val logbackVersion = "1.2.3"
 val junitJupiterVersion = "5.10.2"
+val awaitilityVersion = "3.0.0"
 
 subprojects {
     apply(plugin ="java")
@@ -57,6 +58,10 @@ subprojects {
         // required to create a Gradle test report
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+        testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+
+        // other test libraries
+        testImplementation("org.awaitility:awaitility:$awaitilityVersion")
     }
 
     tasks.test {
