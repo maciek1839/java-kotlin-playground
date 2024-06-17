@@ -1,17 +1,41 @@
 package com.showmeyourcode.playground.java.overview;
 
 import com.showmeyourcode.playground.kotlin.common.Descriptions;
+import lombok.extern.slf4j.Slf4j;
 
-import static com.showmeyourcode.playground.java.LanguageOverview.LOGGER;
+import java.time.Instant;
 
+@Slf4j
 public class Classes {
 
-    private Classes(){}
+    private Classes(){
+        parentMethod();
+    }
 
-    public static void main() {
-        LOGGER.info("\n{} Classes", Descriptions.INDENT1);
+    private void parentMethod(){
+        // logic here
+    }
+
+    // Java inner class is defined inside the body of another class.
+    class InnerClass {
+
+        void method1(){
+            // the inner class can access parent's data
+            Classes.this.parentMethod();
+        }
+    }
+
+    static class StaticInnerClass{
+
+        void method(){
+            // logic here
+        }
+    }
+
+    public static void main(String[] args) {
+        log.info("\n{} Classes", Descriptions.INDENT1);
         // https://en.wikipedia.org/wiki/Class_(computer_programming)
-        LOGGER.info("""
+        log.info("""
                 A class is an extensible program-code-template for creating objects,
                 providing initial values for state (member variables)
                 and implementations of behavior (member functions or methods).
@@ -21,9 +45,10 @@ public class Classes {
         // https://stackoverflow.com/questions/11398122/what-are-the-purposes-of-inner-classes
         // https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
         // https://www.javatpoint.com/java-inner-class
-        LOGGER.info("""
+        // https://www.digitalocean.com/community/tutorials/java-inner-class
+        log.info("""
                 Java inner class or nested class is a class that is declared inside the class or interface.
-                                
+                
                 Conceptually inner classes can be used to represent types in the universe
                 that would not exist without that parent type.
                                 
@@ -38,17 +63,17 @@ public class Classes {
                 3. Bob.ErrorType was a special-purpose class that could and should only be used by Class Bob and no other classes in the project.
                 """
         );
+        InnerClass innerClass = new Classes().new InnerClass();
+        innerClass.method1();
+        StaticInnerClass staticInnerClass = new Classes.StaticInnerClass();
+        staticInnerClass.method();
+
+        log.info("Inner class: {} Static inner class: {}", innerClass, staticInnerClass);
 
         // https://www.baeldung.com/java-anonymous-classes
         // https://stackoverflow.com/questions/355167/how-are-anonymous-inner-classes-used-in-java
         // https://www.digitalocean.com/community/tutorials/java-inner-class
-        LOGGER.info("""
-                                
-                Anonymous classes are inner classes with no name.
-                In other words, anonymous inner classes don't have a name, they do have a type.
-                Since they have no name, we can’t use them in order to create instances of anonymous classes.
-                As a result, we have to declare and instantiate anonymous classes in a single expression at the point of use.
-                                
+        log.info("""
                 A local inner class without name is known as anonymous inner class.
                 An anonymous class is defined and instantiated in a single statement.
                 Anonymous inner class always extend a class or implement an interface.
@@ -61,31 +86,32 @@ public class Classes {
                 due to which local inner classes cannot have any access modifiers associated with them.
                 """
         );
+        // A class i.e., created inside a method, is called local inner class in java.
+        // Local Inner Classes are the inner classes that are defined inside a block.
+        class LocalInner {
+            private final long data = Instant.now().getEpochSecond();
+            void msg() {
+                log.info("Local inner class. Data: {}", data);
+            }
+        }
+        LocalInner l = new LocalInner();
+        l.msg();
+
+        log.info("""
+                
+                Anonymous classes are inner classes with no name.
+                In other words, anonymous inner classes don't have a name, they do have a type.
+                Since they have no name, we can’t use them in order to create instances of anonymous classes.
+                As a result, we have to declare and instantiate anonymous classes in a single expression at the point of use.
+                """
+        );
+
         var anonymousClass = new Runnable() {
             @Override
             public void run() {
+                // logic here
             }
         };
         anonymousClass.run();
-    }
-}
-
-// https://www.javatpoint.com/local-inner-class
-class LocalInner1 {
-    private int data = 30;//instance variable
-
-    void display() {
-        class Local {
-            void msg() {
-                LOGGER.info("{}", data);
-            }
-        }
-        Local l = new Local();
-        l.msg();
-    }
-
-    public static void main(String args[]) {
-        LocalInner1 obj = new LocalInner1();
-        obj.display();
     }
 }

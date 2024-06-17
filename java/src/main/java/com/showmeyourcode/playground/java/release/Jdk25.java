@@ -1,12 +1,16 @@
 package com.showmeyourcode.playground.java.release;
 
 import com.showmeyourcode.playground.kotlin.common.Descriptions;
+import lombok.extern.slf4j.Slf4j;
 
-import static com.showmeyourcode.playground.java.LanguageOverview.LOGGER;
-
+@Slf4j
 public class Jdk25 {
+
+    private Jdk25() {
+    }
+
     public static void main() {
-        LOGGER.info("{} JDK 25", Descriptions.INDENT1);
+        log.info("{} JDK 25", Descriptions.INDENT1);
 
 //        stringTemplates();
     }

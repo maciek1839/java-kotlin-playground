@@ -1,24 +1,49 @@
 package com.showmeyourcode.playground.java.code.pattern.behavioral;
 
+import lombok.extern.slf4j.Slf4j;
+
+// Command is behavioral design pattern that converts requests or simple operations into objects.
+public class Command {
+
+    private Command() {
+    }
+
+    public static void main(String[] args){
+        Light light = new Light();
+
+        CommandInterface turnOn = new TurnOnLightCommand(light);
+        CommandInterface turnOff = new TurnOffLightCommand(light);
+
+        RemoteControl remote = new RemoteControl();
+
+        remote.setCommand(turnOn);
+        remote.pressButton();
+
+        remote.setCommand(turnOff);
+        remote.pressButton();
+    }
+}
+
 // Command interface
 interface CommandInterface {
     void execute();
 }
 
 // Receiver
+@Slf4j
 class Light {
     public void turnOn() {
-        System.out.println("Light is on");
+        log.info("Light is on");
     }
 
     public void turnOff() {
-        System.out.println("Light is off");
+        log.info("Light is off");
     }
 }
 
 // Concrete Command 1
 class TurnOnLightCommand implements CommandInterface {
-    private Light light;
+    private final Light light;
 
     public TurnOnLightCommand(Light light) {
         this.light = light;
@@ -32,7 +57,7 @@ class TurnOnLightCommand implements CommandInterface {
 
 // Concrete Command 2
 class TurnOffLightCommand implements CommandInterface {
-    private Light light;
+    private final Light light;
 
     public TurnOffLightCommand(Light light) {
         this.light = light;
@@ -54,24 +79,5 @@ class RemoteControl {
 
     public void pressButton() {
         command.execute();
-    }
-}
-
-// Command is behavioral design pattern that converts requests or simple operations into objects.
-public class Command {
-
-    public static void main(){
-        Light light = new Light();
-
-        CommandInterface turnOn = new TurnOnLightCommand(light);
-        CommandInterface turnOff = new TurnOffLightCommand(light);
-
-        RemoteControl remote = new RemoteControl();
-
-        remote.setCommand(turnOn);
-        remote.pressButton();
-
-        remote.setCommand(turnOff);
-        remote.pressButton();
     }
 }

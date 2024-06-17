@@ -1,6 +1,5 @@
 package com.showmeyourcode.playground.kotlin
 
-import com.showmeyourcode.playground.kotlin.code.Samples
 import com.showmeyourcode.playground.kotlin.common.Logging
 import com.showmeyourcode.playground.kotlin.overview.Equality
 import com.showmeyourcode.playground.kotlin.overview.LanguageFeatures
@@ -21,7 +20,4 @@ fun main(args: Array<String>) {
     Exceptions.main()
 
     Equality.main()
-
-    // code samples
-    Samples.main()
 }

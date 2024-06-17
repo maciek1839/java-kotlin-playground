@@ -40,6 +40,7 @@ val slf4jVersion = "1.7.30"
 val logbackVersion = "1.2.3"
 val junitJupiterVersion = "5.10.2"
 val awaitilityVersion = "3.0.0"
+val reactorVersion = "3.6.6"
 
 subprojects {
     apply(plugin ="java")
@@ -54,6 +55,7 @@ subprojects {
         implementation("org.slf4j:slf4j-api:$slf4jVersion")
         implementation("ch.qos.logback:logback-classic:$logbackVersion")
         implementation("ch.qos.logback:logback-core:$logbackVersion")
+        implementation("io.projectreactor:reactor-core:$reactorVersion")
 
         // required to create a Gradle test report
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")

@@ -1,59 +1,18 @@
 package com.showmeyourcode.playground.java.code.pattern.behavioral;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 
-// Memento class
-class MementoClass {
-    private String state;
-
-    public MementoClass(String state) {
-        this.state = state;
-    }
-
-    public String getState() {
-        return state;
-    }
-}
-
-// Originator class
-class Originator {
-    private String state;
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public MementoClass saveStateToMemento() {
-        return new MementoClass(state);
-    }
-
-    public void getStateFromMemento(MementoClass memento) {
-        state = memento.getState();
-    }
-}
-
-// Caretaker class
-class Caretaker {
-    private List<MementoClass> mementoList = new ArrayList<>();
-
-    public void add(MementoClass state) {
-        mementoList.add(state);
-    }
-
-    public MementoClass get(int index) {
-        return mementoList.get(index);
-    }
-}
-
 // The Memento pattern provides the ability to restore an object to its previous state.
-public class Memento {
+// https://www.baeldung.com/java-memento-design-pattern
+@Slf4j
+public record Memento(String state) {
 
-    public static void main(){
+    public static void main(String[] args) {
         Originator originator = new Originator();
         Caretaker caretaker = new Caretaker();
 
@@ -65,12 +24,41 @@ public class Memento {
         caretaker.add(originator.saveStateToMemento());
 
         originator.setState("State #4");
-        System.out.println("Current State: " + originator.getState());
+        log.info("Current State: {}", originator.getState());
 
         originator.getStateFromMemento(caretaker.get(0));
-        System.out.println("First saved State: " + originator.getState());
+        log.info("First saved State: {}", originator.getState());
 
         originator.getStateFromMemento(caretaker.get(1));
-        System.out.println("Second saved State: " + originator.getState());
+        log.info("Second saved State: {}", originator.getState());
+    }
+}
+
+// Originator class
+@Getter
+@Setter
+class Originator {
+
+    private String state;
+
+    public Memento saveStateToMemento() {
+        return new Memento(state);
+    }
+
+    public void getStateFromMemento(Memento memento) {
+        state = memento.state();
+    }
+}
+
+// Caretaker class
+class Caretaker {
+    private final List<Memento> mementoList = new ArrayList<>();
+
+    public void add(Memento state) {
+        mementoList.add(state);
+    }
+
+    public Memento get(int index) {
+        return mementoList.get(index);
     }
 }

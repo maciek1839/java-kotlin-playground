@@ -1,5 +1,9 @@
 package com.showmeyourcode.playground.java.code.pattern.creational;
 
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Builder {
     // Required parameters
     private final String licenseNumber;
@@ -66,6 +70,7 @@ public class Builder {
                 '}';
     }
 
+    @ToString
     public static class DriverLicense {
         // Required parameters
         private final String licenseNumber;
@@ -89,7 +94,7 @@ public class Builder {
         }
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         try {
             DriverLicense license = new Builder("123456789", "John Doe")
                     .address("123 Main St")
@@ -99,9 +104,9 @@ public class Builder {
                     .issuingAuthority("DMV")
                     .build();
 
-            System.out.println(license);
+            log.info("{}", license);
         } catch (IllegalArgumentException e) {
-            System.err.println("Error: " + e.getMessage());
+            log.error("Error: {}", e.getMessage());
         }
     }
 }

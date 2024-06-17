@@ -1,11 +1,15 @@
 package com.showmeyourcode.playground.java.code.pattern.behavioral;
 
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
 interface PaymentStrategy {
     void pay(int amount);
 }
 
+@Slf4j
 class CreditCardPayment implements PaymentStrategy {
-    private String cardNumber;
+    private final String cardNumber;
 
     public CreditCardPayment(String cardNumber) {
         this.cardNumber = cardNumber;
@@ -13,16 +17,13 @@ class CreditCardPayment implements PaymentStrategy {
 
     @Override
     public void pay(int amount) {
-        System.out.println("Paid " + amount + " using Credit Card: " + cardNumber);
+        log.info("Paid {} using Credit Card: {}", amount, cardNumber);
     }
 }
 
+@Setter
 class ShoppingCart {
     private PaymentStrategy paymentStrategy;
-
-    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
-        this.paymentStrategy = paymentStrategy;
-    }
 
     public void checkout(int amount) {
         if (paymentStrategy == null) {
@@ -32,8 +33,9 @@ class ShoppingCart {
     }
 }
 
+@Slf4j
 class PayPalPayment implements PaymentStrategy {
-    private String email;
+    private final String email;
 
     public PayPalPayment(String email) {
         this.email = email;
@@ -41,13 +43,16 @@ class PayPalPayment implements PaymentStrategy {
 
     @Override
     public void pay(int amount) {
-        System.out.println("Paid " + amount + " using PayPal: " + email);
+        log.info("Paid {} using PayPal: {}", amount, email);
     }
 }
 
 public class Strategy {
 
-    public static void main(){
+    private Strategy() {
+    }
+
+    public static void main(String[] args){
         ShoppingCart cart = new ShoppingCart();
 
         // Paying with a credit card

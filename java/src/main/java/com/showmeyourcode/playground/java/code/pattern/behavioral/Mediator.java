@@ -1,5 +1,7 @@
 package com.showmeyourcode.playground.java.code.pattern.behavioral;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ interface ChatMediator {
 
 // Concrete Mediator
 class ChatMediatorImpl implements ChatMediator {
-    private List<User> users;
+    private final List<User> users;
 
     public ChatMediatorImpl() {
         this.users = new ArrayList<>();
@@ -37,7 +39,7 @@ abstract class User {
     protected ChatMediator mediator;
     protected String name;
 
-    public User(ChatMediator med, String name) {
+    User(ChatMediator med, String name) {
         this.mediator = med;
         this.name = name;
     }
@@ -47,6 +49,7 @@ abstract class User {
 }
 
 // Concrete Colleague
+@Slf4j
 class UserImpl extends User {
     public UserImpl(ChatMediator med, String name) {
         super(med, name);
@@ -54,20 +57,23 @@ class UserImpl extends User {
 
     @Override
     public void send(String msg) {
-        System.out.println(this.name + ": Sending Message = " + msg);
+        log.info("{}: Sending Message = {}", this.name, msg);
         mediator.sendMessage(msg, this);
     }
 
     @Override
     public void receive(String msg) {
-        System.out.println(this.name + ": Received Message = " + msg);
+        log.info("{}: Received Message = {}", this.name, msg);
     }
 }
 
 // The Mediator pattern provides a way to define an object that encapsulates how a set of objects interact.
 public class Mediator {
 
-    public static void main(){
+    private Mediator() {
+    }
+
+    public static void main(String[] args){
         ChatMediator mediator = new ChatMediatorImpl();
 
         User user1 = new UserImpl(mediator, "John");

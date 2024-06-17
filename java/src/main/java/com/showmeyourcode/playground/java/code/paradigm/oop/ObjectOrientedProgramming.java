@@ -1,10 +1,22 @@
 package com.showmeyourcode.playground.java.code.paradigm.oop;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
 // Vehicle class demonstrating encapsulation and abstraction
+@Getter
+@Slf4j
 class Vehicle {
+    // Encapsulation: The Vehicle class has private fields (brand, speed, fuelCapacity, mileage)
+    // and public getter and setter methods to access and modify these fields.
+    // This ensures that the internal state of the object is protected from unauthorized access.
+    @Setter
     private String brand;
     private int speed;
+    @Setter
     private int fuelCapacity; // in liters
+    @Setter
     private int mileage; // in kilometers per liter
 
     // Constructor
@@ -15,41 +27,10 @@ class Vehicle {
         this.mileage = mileage;
     }
 
-    // Encapsulation: The Vehicle class has private fields (brand, speed, fuelCapacity, mileage)
-    // and public getter and setter methods to access and modify these fields.
-    // This ensures that the internal state of the object is protected from unauthorized access.
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
     public void setSpeed(int speed) {
         if (speed >= 0) {
             this.speed = speed;
         }
-    }
-
-    public int getFuelCapacity() {
-        return fuelCapacity;
-    }
-
-    public void setFuelCapacity(int fuelCapacity) {
-        this.fuelCapacity = fuelCapacity;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
     }
 
     // Abstraction: The Vehicle class uses a private method calculateFuelEfficiency
@@ -68,17 +49,20 @@ class Vehicle {
     }
 
     public void displayInfo() {
-        System.out.println("Brand: " + brand + ", Speed: " + speed + " km/h, Fuel Efficiency: " + getFuelEfficiency() + " km");
+        log.info("Brand: {} Speed: {} km/h, Fuel Efficiency: {} km" , brand, speed, getFuelEfficiency());
     }
 
     // Method to demonstrate polymorphism
     public void makeSound() {
-        System.out.println("Vehicle makes a sound");
+        log.info("Vehicle makes a sound");
     }
 }
 
 // Car class demonstrating inheritance and polymorphism
+@Getter
+@Slf4j
 class Car extends Vehicle {
+    @Setter
     private int numDoors;
 
     public Car(String brand, int speed, int fuelCapacity, int mileage, int numDoors) {
@@ -86,23 +70,16 @@ class Car extends Vehicle {
         this.numDoors = numDoors;
     }
 
-    public int getNumDoors() {
-        return numDoors;
-    }
-
-    public void setNumDoors(int numDoors) {
-        this.numDoors = numDoors;
-    }
-
     @Override
     public void displayInfo() {
         super.displayInfo();
-        System.out.println("Number of doors: " + numDoors);
+        log.info("Number of doors: {}", getNumDoors());
     }
 
     @Override
     public void makeSound() {
-        System.out.println("Car honks");
+        super.makeSound();
+        log.info("Car honks");
     }
 }
 
@@ -121,8 +98,12 @@ class Car extends Vehicle {
  */
 public class ObjectOrientedProgramming {
 
-    public static void main(){
+    private ObjectOrientedProgramming() {
+    }
+
+    public static void main(String[] args){
         Car myCar = new Car("Toyota", 120, 50, 15, 4);
+        myCar.setSpeed(150);
         myCar.displayInfo();
         myCar.makeSound();
     }

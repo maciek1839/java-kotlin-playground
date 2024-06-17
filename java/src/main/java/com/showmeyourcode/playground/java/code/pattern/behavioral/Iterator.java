@@ -1,5 +1,7 @@
 package com.showmeyourcode.playground.java.code.pattern.behavioral;
 
+import lombok.extern.slf4j.Slf4j;
+
 // Aggregate interface
 interface Container {
     IteratorInterface getIterator();
@@ -13,7 +15,7 @@ interface IteratorInterface {
 
 // Concrete Aggregate
 class NameRepository implements Container {
-    public String names[] = {"Robert", "John", "Julie", "Lora"};
+    public final String names[] = {"Robert", "John", "Julie", "Lora"};
 
     @Override
     public IteratorInterface getIterator() {
@@ -40,14 +42,18 @@ class NameRepository implements Container {
 
 // The Iterator pattern provides a way to access the elements of an aggregate object sequentially
 // without exposing its underlying representation.
+@Slf4j
 public class Iterator {
 
-    public static void main(){
+    private Iterator() {
+    }
+
+    public static void main(String[] args){
         NameRepository namesRepository = new NameRepository();
 
         for (IteratorInterface iter = namesRepository.getIterator(); iter.hasNext(); ) {
             String name = (String) iter.next();
-            System.out.println("Name: " + name);
+            log.info("Name: {}", name);
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.showmeyourcode.playground.java.code.pattern.behavioral;
 
+import lombok.extern.slf4j.Slf4j;
+
 abstract class AbstractAlgorithm {
     public void execute() {
         stepOne();
@@ -12,50 +14,56 @@ abstract class AbstractAlgorithm {
     protected abstract void stepThree();
 }
 
+@Slf4j
 class ConcreteAlgorithmA extends AbstractAlgorithm {
     @Override
     protected void stepOne() {
-        System.out.println("ConcreteAlgorithmA: Step One");
+        log.info("ConcreteAlgorithmA: Step One");
     }
 
     @Override
     protected void stepTwo() {
-        System.out.println("ConcreteAlgorithmA: Step Two");
+        log.info("ConcreteAlgorithmA: Step Two");
     }
 
     @Override
     protected void stepThree() {
-        System.out.println("ConcreteAlgorithmA: Step Three");
+        log.info("ConcreteAlgorithmA: Step Three");
     }
 }
 
+@Slf4j
 class ConcreteAlgorithmB extends AbstractAlgorithm {
     @Override
     protected void stepOne() {
-        System.out.println("ConcreteAlgorithmB: Step One");
+        log.info("ConcreteAlgorithmB: Step One");
     }
 
     @Override
     protected void stepTwo() {
-        System.out.println("ConcreteAlgorithmB: Step Two");
+        log.info("ConcreteAlgorithmB: Step Two");
     }
 
     @Override
     protected void stepThree() {
-        System.out.println("ConcreteAlgorithmB: Step Three");
+        log.info("ConcreteAlgorithmB: Step Three");
     }
 }
 
+@Slf4j
 public class TemplateMethod {
 
-    public static void main(){
+    private TemplateMethod() {
+    }
+
+    public static void main(String[] args){
         AbstractAlgorithm algorithmA = new ConcreteAlgorithmA();
         AbstractAlgorithm algorithmB = new ConcreteAlgorithmB();
 
-        System.out.println("Executing Algorithm A:");
+        log.info("Executing Algorithm A:");
         algorithmA.execute();
 
-        System.out.println("\nExecuting Algorithm B:");
+        log.info("\nExecuting Algorithm B:");
         algorithmB.execute();
     }
 }

@@ -4,6 +4,7 @@
   - Pattern matching for switch
   - Sequenced collections
   - Record patterns
+    - Enhance the Java programming language with record patterns to deconstruct record values.
   - Virtual threads
 - [JDK 17](https://www.oracle.com/java/technologies/javase/17-relnote-issues.html) | 14th September 2021
     - Sealed classes

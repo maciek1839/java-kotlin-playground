@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.AnnotationSpec
 
 class ApplicationTest : AnnotationSpec() {
     @Test
-    fun `should call the main method without errors`() {
+    fun `should call the main function without errors`() {
         shouldNotThrow<Throwable> {
             main(arrayOf())
         }

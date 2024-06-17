@@ -1,42 +1,60 @@
 package com.showmeyourcode.playground.java.code.pattern.structural;
 
+import lombok.extern.slf4j.Slf4j;
+
+// The Facade pattern provides a simplified interface to a complex subsystem.
+public class Facade {
+
+    private Facade() {
+    }
+
+    public static void main(String[] args) {
+        ComputerFacade computer = new ComputerFacade();
+        computer.start();
+    }
+}
+
 // Complex subsystem
+@Slf4j
 class CPU {
     public void start() {
-        System.out.println("CPU started");
+        log.info("CPU started");
     }
 
     public void execute() {
-        System.out.println("CPU executing");
+        log.info("CPU executing");
     }
 
     public void load() {
-        System.out.println("CPU loading");
+        log.info("CPU loading");
     }
 
     public void free() {
-        System.out.println("CPU freeing");
+        log.info("CPU freeing");
     }
 }
 
+@Slf4j
 class Memory {
     public void load(long position, byte[] data) {
-        System.out.println("Memory loaded");
+        log.info("Memory loaded - position: {} data: {}", position, data);
     }
 }
 
+@Slf4j
 class HardDrive {
     public byte[] read(long lba, int size) {
-        System.out.println("HardDrive reading");
+        log.info("HardDrive reading, lba: {} size: {}", lba, size);
         return new byte[size];
     }
 }
 
 // Facade
+@Slf4j
 class ComputerFacade {
-    private CPU cpu;
-    private Memory memory;
-    private HardDrive hardDrive;
+    private final CPU cpu;
+    private final Memory memory;
+    private final HardDrive hardDrive;
 
     public ComputerFacade() {
         this.cpu = new CPU();
@@ -47,16 +65,7 @@ class ComputerFacade {
     public void start() {
         cpu.start();
         cpu.load();
-        memory.load(0, hardDrive.read(0, 1024));
+        memory.load(0, hardDrive.read(0, 256));
         cpu.execute();
-    }
-}
-
-// The Facade pattern provides a simplified interface to a complex subsystem.
-public class Facade {
-
-    public static void main() {
-        ComputerFacade computer = new ComputerFacade();
-        computer.start();
     }
 }

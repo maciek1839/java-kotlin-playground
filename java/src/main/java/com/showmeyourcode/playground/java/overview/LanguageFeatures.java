@@ -1,19 +1,18 @@
 package com.showmeyourcode.playground.java.overview;
 
-
 import com.showmeyourcode.playground.kotlin.common.Descriptions;
+import lombok.extern.slf4j.Slf4j;
 
-import static com.showmeyourcode.playground.java.LanguageOverview.LOGGER;
-
+@Slf4j
 public class LanguageFeatures {
 
     private LanguageFeatures(){}
 
-    public static void main(){
-        LOGGER.info(Descriptions.header(Descriptions.LANGUAGE_FEATURES));
-        LOGGER.info("Below some Java features/syntax good to know:");
+    public static void main(String[] args){
+        log.info(Descriptions.header(Descriptions.LANGUAGE_FEATURES));
+        log.info("Below some Java features/syntax good to know:");
 
-        LOGGER.info("\n{}  Ternary operator", Descriptions.INDENT1);
-        LOGGER.info("variable = (condition) ? expressionTrue :  expressionFalse");
+        log.info("\n{}  Ternary operator", Descriptions.INDENT1);
+        log.info("variable = (condition) ? expressionTrue :  expressionFalse");
     }
 }

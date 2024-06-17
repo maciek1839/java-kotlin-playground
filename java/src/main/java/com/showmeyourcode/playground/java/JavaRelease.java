@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 
 public class JavaRelease {
 
+    // an example how to use a Kotlin class in Java
     public static final Logger LOGGER = Logging.INSTANCE.getLOGGER();
 
     public static void main(String[] args) {

@@ -1,33 +1,36 @@
 package com.showmeyourcode.playground.java.overview.concurrency;
 
 import com.showmeyourcode.playground.kotlin.common.Descriptions;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.showmeyourcode.playground.java.LanguageOverview.LOGGER;
-
+@Slf4j
 public class Concurrency {
 
-    private static Object mutex = new Object();
-    private static ReentrantLock fairMutex = new ReentrantLock(true);
+    private Concurrency() {
+    }
 
-    private static Semaphore binarySemaphore = new Semaphore(1);
-    private static Semaphore fairSemaphore = new Semaphore(1, true);
-    private static Semaphore semaphore = new Semaphore(5);
+    private static final Object mutex = new Object();
+    private static final ReentrantLock fairMutex = new ReentrantLock(true);
 
-    public static void main(){
+    private static final Semaphore binarySemaphore = new Semaphore(1);
+    private static final Semaphore fairSemaphore = new Semaphore(1, true);
+    private static final Semaphore semaphore = new Semaphore(5);
+
+    public static void main(String[] args){
         // https://www.baeldung.com/java-mutex
-        LOGGER.info("{} Concurrency", Descriptions.INDENT1);
-        LOGGER.info("Concurrency means multiple computations are happening at the same time.");
+        log.info("{} Concurrency", Descriptions.INDENT1);
+        log.info("Concurrency means multiple computations are happening at the same time.");
 
         yieldSleepWaitJoin();
 
-        LOGGER.info("\n==> Race condition");
+        log.info("\n==> Race condition");
         // https://www.baeldung.com/cs/race-conditions
-        LOGGER.info("""
+        log.info("""
                 In a multithreaded application, two or more threads may need to access
                 a shared resource at the same time, resulting in unexpected behavior.
                 
@@ -46,7 +49,7 @@ public class Concurrency {
         );
 
         // https://naveen-metta.medium.com/atomic-operations-in-java-mastering-thread-safety-and-concurrency-7c3360ec0bc5
-        LOGGER.info("""
+        log.info("""
                 Consider a scenario where multiple threads are simultaneously updating a shared counter variable.
                 If these operations are not performed atomically, race conditions may occur,
                 leading to inconsistent or incorrect results. Atomic operations provide a solution
@@ -58,17 +61,17 @@ public class Concurrency {
                 """);
 
 
-        LOGGER.info("\n==> Mutex");
+        log.info("\n==> Mutex");
         // https://stackoverflow.com/questions/20120324/how-does-java-determine-which-thread-should-proceed-when-using-synchronized
         // https://www.baeldung.com/java-binary-semaphore-vs-reentrant-lock
         // https://stackoverflow.com/questions/17683575/binary-semaphore-vs-a-reentrantlock
         // https://stackoverflow.com/questions/44964979/what-is-fairness-in-multi-threading-programming
-        LOGGER.info("""
+        log.info("""
                 A mutex (or mutual exclusion) is the simplest type of synchronizer –
                 it ensures that only one thread can execute the critical section of a computer program at a time.
                 
-                Mutex is a specific kind of binary semaphore that is used to provide a locking mechanism.
-                It stands for Mutual Exclusion Object.
+                Semaphores allow multiple threads or processes to access a shared resource with limited capacity, 
+                while mutexes only allow one thread or process to access a shared resource at a time.\s
                 
                 To access a critical section, a thread acquires the mutex, then accesses the critical section,
                 and finally releases the mutex. In the meantime, all other threads block till the mutex releases.
@@ -94,14 +97,14 @@ public class Concurrency {
         );
 
         // https://www.techtarget.com/searchnetworking/definition/mutex
-        LOGGER.info("""
+        log.info("""
                 In computer programming, a mutual exclusion (mutex) is a program object that
                 prevents multiple threads from accessing the same shared resource simultaneously.
                 """
         );
 
-        LOGGER.info("'synchronized' keyword, which is the simplest way to implement a mutex in Java.");
-        LOGGER.info("""
+        log.info("'synchronized' keyword, which is the simplest way to implement a mutex in Java.");
+        log.info("""
                 Every object in Java has an intrinsic lock associated with it.
                 The synchronized method and the synchronized block use this intrinsic lock to restrict the access
                 of the critical section to only one thread at a time.
@@ -110,10 +113,10 @@ public class Concurrency {
         synchronizedMethod();
         synchronizedBlock();
 
-        LOGGER.info("\n=> ReentrantLock");
+        log.info("\n=> ReentrantLock");
         // https://stackoverflow.com/questions/1312259/what-is-the-re-entrant-lock-and-concept-in-general
-        LOGGER.info("ReentrantLock and synchronized are examples of mutexes in Java.");
-        LOGGER.info("""
+        log.info("ReentrantLock and synchronized are examples of mutexes in Java.");
+        log.info("""
                 A reentrant lock is one where a process can claim the lock multiple times without blocking on itself.
                 
                 A use case for re-entrant locking:
@@ -124,8 +127,8 @@ public class Concurrency {
                 """);
         reentrantLock();
 
-        LOGGER.info("\n==> Semaphore");
-        LOGGER.info("""
+        log.info("\n==> Semaphore");
+        log.info("""
                 A semaphore is a synchronization object that maintains a set of permits.
                 Each permit may be acquired by a thread.
                 
@@ -139,8 +142,8 @@ public class Concurrency {
         semaphore();
 
         // https://stackoverflow.com/questions/62814/difference-between-binary-semaphore-and-mutex
-        LOGGER.info("\n==> Mutex vs Semaphore");
-        LOGGER.info("""
+        log.info("\n==> Mutex vs Semaphore");
+        log.info("""
                 A mutex can be released only by the thread that had acquired it.
                 A binary semaphore can be signaled by any thread (or process).
                 
@@ -150,7 +153,7 @@ public class Concurrency {
                 A mutex is meant to be taken and released.
                 
                 """);
-        LOGGER.info("""
+        log.info("""
                 When to use mutex and semaphore?
                 
                 Semaphores allow multiple threads or processes to access a shared resource with limited capacity,
@@ -170,8 +173,8 @@ public class Concurrency {
                 """);
 
 
-        LOGGER.info("\n==> Monitor");
-        LOGGER.info("""
+        log.info("\n==> Monitor");
+        log.info("""
                 It is a synchronization mechanism that controls concurrent access to an object.
                 
                 In Java terminology a monitor is a mutex lock which is implicitly associated with an object.
@@ -181,15 +184,15 @@ public class Concurrency {
                 """);
 
 
-        LOGGER.info("\n==> Deadlocks");
+        log.info("\n==> Deadlocks");
         // https://davidvlijmincx.com/posts/how-to-use-java-semaphore/
-        LOGGER.info("""
+        log.info("""
                 Deadlocks occur when two or more threads are blocked waiting forever for each other to release resources.
                 Deadlocks can occur when there is a circular dependency between resources.
                 """);
 
         // https://www.geeksforgeeks.org/conditions-for-deadlock-in-operating-system/
-        LOGGER.info("""
+        log.info("""
                 Causes of deadlocks:
                 - Mutual Exclusion
                     - This condition requires that at least one resource be held in a non-shareable mode,
@@ -209,7 +212,7 @@ public class Concurrency {
                 """);
 
         // https://dip-mazumder.medium.com/mastering-java-concurrency-deadlock-causes-and-prevention-e4f08f2fe33c
-        LOGGER.info("""
+        log.info("""
                 Preventing deadlocks:
                 - Lock Ordering
                     - Lock ordering is a simple but effective deadlock prevention technique.
@@ -222,11 +225,11 @@ public class Concurrency {
 
         releaseWithTimeout();
 
-        LOGGER.info("\n==> Starvation");
+        log.info("\n==> Starvation");
         // https://docs.oracle.com/javase/tutorial/essential/concurrency/starvelive.html
         // https://medium.com/javarevisited/starvation-of-threads-in-java-e3d6bcfeb770
         // https://www.linkedin.com/pulse/starvation-multithreading-understanding-causes-pavan-pothuganti-faknc
-        LOGGER.info("""
+        log.info("""
                Starvation describes a situation where a thread is unable to
                gain regular access to shared resources and is unable to make progress.
                This happens when shared resources are made unavailable for long periods by "greedy" threads.
@@ -258,8 +261,8 @@ public class Concurrency {
                       if a resource cannot be acquired within a specified time.
                """);
 
-        LOGGER.info("\n==> Livelock");
-        LOGGER.info("""
+        log.info("\n==> Livelock");
+        log.info("""
                 Livelock: A situation in which two or more processes continuously change their states in response
                 to changes in the other process(es) without doing any useful work
                 """);
@@ -269,7 +272,7 @@ public class Concurrency {
     }
 
     private static void countDownLatchDemo() {
-        LOGGER.info("=> CountDownLatch");
+        log.info("=> CountDownLatch");
         try {
             CountDownLatchDemo.main(new String[]{});
         } catch (IOException e) {
@@ -284,8 +287,8 @@ public class Concurrency {
         // https://stackoverflow.com/questions/26798073/difference-between-wait-and-yield
         // https://www.baeldung.com/java-thread-yield
         // https://www.geeksforgeeks.org/java-concurrency-yield-sleep-and-join-methods/
-        LOGGER.info("\n==> Yield");
-        LOGGER.info("""
+        log.info("\n==> Yield");
+        log.info("""
                 The yield() method of thread class causes the currently executing thread object
                 to temporarily pause and allow other threads to execute.
                 So, yield is just a hint to the JVM that current thread wants to take a rest and nothing else,
@@ -295,7 +298,7 @@ public class Concurrency {
         Runnable r = () -> {
             int counter = 0;
             while (counter < 2) {
-                LOGGER.info(Thread.currentThread()
+                log.info(Thread.currentThread()
                         .getName());
                 counter++;
                 Thread.yield();
@@ -304,14 +307,14 @@ public class Concurrency {
         new Thread(r).start();
         new Thread(r).start();
 
-        LOGGER.info("\n==> Wait");
-        LOGGER.info("""
+        log.info("\n==> Wait");
+        log.info("""
                 Calling wait() forces the current thread to wait until some other thread invokes
                 notify() or notifyAll() on the same object.
                 """);
 
-        LOGGER.info("\n==> Sleep");
-        LOGGER.info("""
+        log.info("\n==> Sleep");
+        log.info("""
                 This method causes the currently executing thread to sleep for the specified number of milliseconds.
                 Thread. sleep causes the current thread to suspend execution for a specified period.
                 This is an efficient means of making processor time available to the other threads
@@ -327,8 +330,8 @@ public class Concurrency {
                 - A wait can be "woken up" by another thread calling notify on the monitor which is being waited on whereas a sleep cannot.
                 """);
 
-        LOGGER.info("\n==> Join");
-        LOGGER.info("""
+        log.info("\n==> Join");
+        log.info("""
                 The join() method of a Thread instance is used to join the start of a thread’s execution
                 to the end of another thread’s execution such that a thread does not start running
                 until another thread ends.
@@ -351,7 +354,7 @@ public class Concurrency {
     private static void semaphore() {
         try {
             semaphore.acquire();
-            LOGGER.info("I am busy with another semaphore...");
+            log.info("I am busy with another semaphore...");
         } catch (InterruptedException e) {
             // exception handling code
         } finally {
@@ -362,7 +365,7 @@ public class Concurrency {
     private static void fairSemaphore() {
         try {
             fairSemaphore.acquire();
-            LOGGER.info("I am busy with a fair semaphore...");
+            log.info("I am busy with a fair semaphore...");
         } catch (InterruptedException e) {
             // exception handling code
         } finally {
@@ -373,7 +376,7 @@ public class Concurrency {
     private static void binarySemaphore() {
         try {
             binarySemaphore.acquire();
-            LOGGER.info("I am busy with a semaphore...");
+            log.info("I am busy with a semaphore...");
         } catch (InterruptedException e) {
             // exception handling code
         } finally {
@@ -384,7 +387,7 @@ public class Concurrency {
     private static void reentrantLock() {
             fairMutex.lock();
             try {
-                LOGGER.info("I am busy again...");
+                log.info("I am busy again...");
             } finally {
                 fairMutex.unlock();
             }
@@ -392,11 +395,11 @@ public class Concurrency {
 
     private static void synchronizedBlock() {
         synchronized (mutex) {
-            LOGGER.info("I am super busy now...");
+            log.info("I am super busy now...");
         }
     }
 
     private synchronized static void  synchronizedMethod(){
-        LOGGER.info("I am busy...");
+        log.info("I am busy...");
     }
 }
