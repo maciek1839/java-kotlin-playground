@@ -46,17 +46,7 @@ JVM is specifically responsible for converting bytecode to machine-specific code
 
 ---
 
-According to the Java SE specification, in order to get code running in the JVM, you need to complete three steps:
-- loading bytecode from resources and creating an instance of the classClass
-- binding (or linking)
-  - According to the specification, this stage is divided into three more stages:
-    - Verification , the correctness of the received bytecode is checked.
-    - Preparation , allocating RAM for static fields and initializing them with default values ​​(in this case, explicit initialization, if any, occurs already at the initialization stage).
-    - Resolution , resolution of symbolic links of types, fields and methods.
-- initializing the received object
-  - here, unlike the previous paragraphs, everything seems to be clear what should happen. It would, of course, be interesting to understand exactly how this happens.
-
-Reference: https://javarush.com/en/groups/posts/en.646.how-classes-are-loaded-into-the-jvm
+***[Here you can find more details about JVM.](JVM.md)***
 
 ### Error hierarchy
 
@@ -87,6 +77,14 @@ Objects are created at runtime from templates, which are also known as classes.
 
 [Reference1](https://stackoverflow.com/questions/45453376/what-does-object-identity-mean-in-java)
 [Reference2](https://www.techopedia.com/definition/24339/java-object)
+
+### String pool
+
+String Pool in java is a pool of Strings stored in Java Heap Memory. It is only possible because String is immutable in Java. 
+
+String pool is also example of Flyweight design pattern. String pool helps in saving a lot of space for Java Runtime, although it takes more time to create the String. When we use double quotes to create a String, it first looks for String with the same value in the String pool, if found it just returns the reference else it creates a new String in the pool and then returns the reference. However, using new operator, we force String class to create a new String object in heap space.
+
+Ref: https://www.digitalocean.com/community/tutorials/what-is-java-string-pool
 
 ### Project Loom
 
