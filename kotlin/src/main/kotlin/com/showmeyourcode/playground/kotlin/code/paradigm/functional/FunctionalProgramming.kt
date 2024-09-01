@@ -1,10 +1,21 @@
 package com.showmeyourcode.playground.kotlin.code.paradigm.functional
 
+import arrow.core.Either
+import arrow.core.flatMap
+import arrow.core.left
+import arrow.core.right
+
 sealed class Result
 
 data class Success(val message: String) : Result()
 
 data class Error(val message: String) : Result()
+
+sealed class ValidationError(val message: String) {
+    object NameEmpty : ValidationError("Name cannot be empty")
+
+    object AgeTooLow : ValidationError("Age must be at least 18")
+}
 
 object FunctionalProgramming {
     fun main() {
@@ -16,6 +27,64 @@ object FunctionalProgramming {
         uncurrying()
         // functional constructs
         kotlinStandardLibraryFunctions()
+        // functional libraries
+        arrowLibrary()
+    }
+
+    private fun arrowLibrary() {
+        // validation
+        // https://arrow-kt.io/learn/typed-errors/validation/
+        data class User(val name: String, val age: Int)
+
+        fun validateName(name: String): Either<ValidationError, String> =
+            if (name.isNotBlank()) {
+                name.right()
+            } else {
+                ValidationError.NameEmpty.left()
+            }
+
+        fun validateAge(age: Int): Either<ValidationError, Int> =
+            if (age >= 18) {
+                age.right()
+            } else {
+                ValidationError.AgeTooLow.left()
+            }
+
+        fun validateUser(
+            name: String,
+            age: Int
+        ): Either<ValidationError, User> =
+            validateName(name).flatMap { validName ->
+                validateAge(age).map { validAge ->
+                    User(validName, validAge)
+                }
+            }
+
+        val result1 = validateUser("John Doe", 20)
+        val result2 = validateUser("", 16)
+
+        println(result1) // Right(User(name=John Doe, age=20))
+        println(result2) // Left(Name cannot be empty)
+
+        // functional constructs
+        fun processEmail(email: String): Either<String, String> =
+            email.takeIf { it.contains("@") }
+                ?.right()
+                ?.flatMap { it.split("@").last().right() }
+                ?.flatMap { domain ->
+                    if (domain.isNotBlank()) {
+                        domain.right()
+                    } else {
+                        "Domain cannot be blank".left()
+                    }
+                }
+                ?: "Invalid email: $email".left()
+
+        val result = processEmail("user@example.com")
+        println(result) // Right(example.com)
+
+        val invalidEmailResult = processEmail("userexample.com")
+        println(invalidEmailResult) // Left(Invalid email: userexample.com)
     }
 
     private fun kotlinStandardLibraryFunctions() {
