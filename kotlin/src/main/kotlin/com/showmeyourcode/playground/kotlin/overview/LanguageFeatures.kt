@@ -2,6 +2,8 @@ package com.showmeyourcode.playground.kotlin.overview
 
 import com.showmeyourcode.playground.kotlin.common.Descriptions
 import com.showmeyourcode.playground.kotlin.common.Logging
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 object LanguageFeatures {
     fun main() {
@@ -19,6 +21,7 @@ object LanguageFeatures {
         collectionLiterals()
         extensionFunctions()
         varianceModifiers()
+        readingFiles()
     }
 
     // Covariant interface (out) - Produces values
@@ -481,6 +484,24 @@ object LanguageFeatures {
             """.trimIndent()
         )
         Logging.LOGGER.info("150/10 == 15 ?: 100 Result: ${150 / 10 == 15 ?: 100}")
+    }
+
+    private fun readingFiles() {
+        Logging.LOGGER.info("\n{} Reading files", Descriptions.INDENT1)
+
+        fun readFromClasspath(fileName: String): String {
+            val inputStream =
+                this::class.java.classLoader.getResourceAsStream(fileName)
+                    ?: throw IllegalArgumentException("File not found in classpath: $fileName")
+
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            // Operate on objects implementing Closeable or AutoCloseable using 'use'. It is a safe and easy option.
+            return reader.use { it.readText() }
+        }
+
+        val fileName = "test.txt"
+        val fileContent = readFromClasspath(fileName)
+        println(fileContent)
     }
 }
 

@@ -21,7 +21,6 @@ Below you can find some references to interesting parts of documentation:
 
 *Run the main method of a given module and follow printed information and examples.*
 
-
 ## Object in Java vs Kotlin
 
 In Java, an Object typically refers to an instance of a class. However, in Kotlin, the object keyword introduces singleton objects, companion objects, and object expressions.
