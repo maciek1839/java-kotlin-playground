@@ -1,5 +1,5 @@
 default:
-  image: amazoncorretto:21.0.3-alpine3.19
+  image: amazoncorretto:21.0.6-alpine3.19@sha256:2a984f63f7190eeaaffb43cfa2c9a9ac5c4050506035514fc73b6c1b210954d1
   before_script:
     - ': before_script'
     - chmod +x gradlew

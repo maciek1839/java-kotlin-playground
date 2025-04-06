@@ -35,12 +35,12 @@
     - Try-With-Resources
     - Interface Private Method
     - Compact strings
-        - A Java String (before Java 9) is represented internally in the Java VM using bytes, encoded as UTF-16.
-        - UTF-16 uses 2 bytes to represent a single character.
-        - From Java 9 and forward, The Java VM can optimize strings using a new Java feature called compact strings.
-        - The compact strings feature lets the Java VM detect if a string only contains ISO-8859-1/Latin-1 characters.
-        - If it does, the String will only use 1 byte per character internally.
-- [JDK  8](https://www.oracle.com/java/technologies/javase/8-whats-new.html)
+        - Before Java 9, Strings were internally represented using UTF-16 encoding, where each character occupied 2 bytes in memory.
+        - Starting from Java 9, the Compact Strings feature optimizes memory usage by dynamically adjusting storage based on character content.
+        - If a String contains only ISO-8859-1 (Latin-1) characters, it is stored using 1 byte per character instead of 2.
+        - If a String contains non-ASCII (Unicode) characters, it retains the UTF-16 representation.
+        - This optimization reduces memory consumption and improves performance for ASCII-based strings without affecting functionality.
+- [JDK 8](https://www.oracle.com/java/technologies/javase/8-whats-new.html)
     - Lambda expressions
     - Method references
     - Functional interfaces

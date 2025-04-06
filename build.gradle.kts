@@ -1,10 +1,10 @@
 plugins {
     java
-    kotlin("jvm") version "1.9.23" apply false
+    kotlin("jvm") version "2.1.10" apply false
 
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.0" apply false
+    id("org.jlleitschuh.gradle.ktlint") version "12.2.0" apply false
 
-    id("org.sonarqube") version "5.0.0.4638"
+    id("org.sonarqube") version "6.0.1.5171"
     jacoco
 }
 
@@ -36,11 +36,11 @@ allprojects{
     }
 }
 
-val slf4jVersion = "1.7.30"
-val logbackVersion = "1.2.3"
-val junitJupiterVersion = "5.10.2"
-val awaitilityVersion = "3.0.0"
-val reactorVersion = "3.6.6"
+val slf4jVersion = "2.0.17"
+val logbackVersion = "1.5.17"
+val junitJupiterVersion = "5.11.4"
+val awaitilityVersion = "4.3.0"
+val reactorVersion = "3.7.3"
 
 subprojects {
     apply(plugin ="java")

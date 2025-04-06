@@ -12,6 +12,17 @@ public class Jdk17 {
     private Jdk17() {
     }
 
+     static void main() {
+        log.info("\n{} JDK 17", Descriptions.INDENT1);
+        log.info("JDK 17 reached General Availability on 14th September 2021.");
+        log.info("https://www.oracle.com/java/technologies/javase/17-relnote-issues.html");
+        sealedClasses();
+        patternMatching();
+        records();
+        textBlocks();
+        compactNumberFormatting();
+    }
+
     private static void compactNumberFormatting() {
         // https://symphony-solutions.com/insights/java-12-17-features
         log.info("\n{} Compact Number Formatting Support", Descriptions.INDENT2);
@@ -32,17 +43,6 @@ public class Jdk17 {
                 shortFormat.format(123435.546786543),
                 longFormat.format(123435.546786543)
         );
-    }
-
-    public static void main() {
-        log.info("\n{} JDK 17", Descriptions.INDENT1);
-        log.info("JDK 17 reached General Availability on 14th September 2021.");
-        log.info("https://www.oracle.com/java/technologies/javase/17-relnote-issues.html");
-        sealedClasses();
-        patternMatching();
-        records();
-        textBlocks();
-        compactNumberFormatting();
     }
 
     private static void patternMatching() {
