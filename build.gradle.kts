@@ -1,10 +1,10 @@
 plugins {
     java
-    kotlin("jvm") version "2.1.20" apply false
+    kotlin("jvm") version "2.2.20" apply false
 
-    id("org.jlleitschuh.gradle.ktlint") version "12.2.0" apply false
+    id("org.jlleitschuh.gradle.ktlint") version "12.3.0" apply false
 
-    id("org.sonarqube") version "6.1.0.5360"
+    id("org.sonarqube") version "6.3.1.5724"
     jacoco
 }
 
@@ -40,7 +40,7 @@ val slf4jVersion = "2.0.17"
 val logbackVersion = "1.5.18"
 val junitJupiterVersion = "5.11.4"
 val awaitilityVersion = "4.3.0"
-val reactorVersion = "3.7.4"
+val reactorVersion = "3.7.11"
 
 subprojects {
     apply(plugin ="java")
