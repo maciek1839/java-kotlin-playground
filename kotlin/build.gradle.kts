@@ -2,7 +2,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
 }
 
-val coroutinesVersion: String = "1.8.0"
+val coroutinesVersion: String = "1.10.2"
 val arrowVersion: String = "1.2.4"
 val kotestVersion: String = "5.7.2"
 val arrowTestVersion: String = "1.4.0"
