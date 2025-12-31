@@ -3,9 +3,9 @@ plugins {
 }
 
 val coroutinesVersion: String = "1.8.0"
-val arrowVersion: String = "1.2.4"
-val kotestVersion: String = "5.7.2"
-val arrowTestVersion: String = "1.4.0"
+val arrowVersion: String = "2.2.1"
+val kotestVersion: String = "6.0.7"
+val arrowTestVersion: String = "2.0.0"
 val mockkVersion: String = "1.13.9"
 
 kotlin {
