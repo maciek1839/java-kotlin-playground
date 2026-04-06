@@ -6,6 +6,7 @@ import com.showmeyourcode.playground.kotlin.overview.LanguageFeatures
 import com.showmeyourcode.playground.kotlin.overview.datatype.Datatypes
 import com.showmeyourcode.playground.kotlin.overview.exception.Exceptions
 import com.showmeyourcode.playground.kotlin.overview.keyword.Keywords
+import com.showmeyourcode.playground.kotlin.release.KotlinReleases
 
 @Suppress("UNUSED_PARAMETER")
 fun main(args: Array<String>) {
@@ -20,4 +21,6 @@ fun main(args: Array<String>) {
     Exceptions.main()
 
     Equality.main()
+
+    KotlinReleases.main()
 }
