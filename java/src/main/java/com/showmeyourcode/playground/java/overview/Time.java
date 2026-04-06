@@ -36,11 +36,11 @@ public class Time {
         );
 
         log.info(
-                String.format("Difference (TimeUnit): seconds - %d, minutes - %d, hours - %d, days - %d", diffInSeconds, diffInMinutes, diffInHours, diffInDays)
+                "Difference (TimeUnit): seconds - %d, minutes - %d, hours - %d, days - %d".formatted(diffInSeconds, diffInMinutes, diffInHours, diffInDays)
         );
 
         log.info(
-                String.format("Difference (ChronoUnit): seconds - %d, years: %d", chronoSeconds, chronoYears)
+                "Difference (ChronoUnit): seconds - %d, years: %d".formatted(chronoSeconds, chronoYears)
         );
 
 

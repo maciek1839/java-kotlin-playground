@@ -14,7 +14,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
@@ -22,6 +21,7 @@ import kotlinx.coroutines.channels.produce
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -452,6 +452,8 @@ object Coroutines {
             }
         }
 
+    // Note: Java 21 introduced virtual threads (Executors.newVirtualThreadPerTaskExecutor()),
+    // but ScheduledExecutorService does not yet support virtual threads directly.
     private val executor =
         Executors.newSingleThreadScheduledExecutor {
             Thread(it, "scheduler").apply { isDaemon = true }
@@ -529,7 +531,7 @@ object Coroutines {
             val job = Job() // Create a new Job
             launch(job) { // Launch a coroutine with the job
                 repeat(50) { i ->
-                    Thread.sleep(200) // This is a blocking call
+                    Thread.sleep(200) // Intentionally blocking to demonstrate non-cooperative cancellation
                     // Complex operations or file I/O can be here
                     println("Printing $$i") // Printing
                 }
@@ -710,26 +712,25 @@ object Coroutines {
             delay(1000)
             basicChannel.close()
 
-            // 2. Broadcast Channel
-            val broadcastChannel = BroadcastChannel<Int>(Channel.BUFFERED)
+            // 2. SharedFlow (replaces deprecated BroadcastChannel)
+            val sharedFlow = MutableSharedFlow<Int>(replay = 1, extraBufferCapacity = 64)
 
             launch {
                 for (i in 1..3) {
                     delay(100)
-                    broadcastChannel.send(i)
-                }
-                broadcastChannel.close()
-            }
-
-            launch {
-                for (value in broadcastChannel.openSubscription()) {
-                    println("Broadcast Channel Consumer 1 received: $value")
+                    sharedFlow.emit(i)
                 }
             }
 
             launch {
-                for (value in broadcastChannel.openSubscription()) {
-                    println("Broadcast Channel Consumer 2 received: $value")
+                sharedFlow.take(3).collect { value ->
+                    println("SharedFlow Consumer 1 received: $value")
+                }
+            }
+
+            launch {
+                sharedFlow.take(3).collect { value ->
+                    println("SharedFlow Consumer 2 received: $value")
                 }
             }
 

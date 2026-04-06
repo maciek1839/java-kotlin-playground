@@ -52,7 +52,7 @@ public class TuringMachineExercise {
         while (!state.equals(MachineState.STATE_STOP)) {
             char currentSymbol = tape[head];
             switch (state) {
-                case STATE_0:
+                case STATE_0 -> {
                     if (currentSymbol == ONE) {
                         tape[head] = ZERO;
                         state = MachineState.STATE_STOP;
@@ -61,8 +61,8 @@ public class TuringMachineExercise {
                         head--;
                         state = MachineState.STATE_1;
                     }
-                    break;
-                case STATE_1:
+                }
+                case STATE_1 -> {
                     if (currentSymbol == ZERO) {
                         tape[head] = ONE;
                         head--;
@@ -72,9 +72,8 @@ public class TuringMachineExercise {
                     } else if (currentSymbol == BLANK) {
                         state = MachineState.STATE_STOP;
                     }
-                    break;
-                default:
-                    log.debug("Ignoring state: {}", state);
+                }
+                default -> log.debug("Ignoring state: {}", state);
             }
         }
     }

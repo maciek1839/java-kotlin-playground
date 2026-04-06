@@ -17,7 +17,7 @@ public class FunctionalInterfaceExercise {
         Consumer<String> printConsumer = x -> log.info("Print: {}", x);
         printConsumer.accept("java");
 
-        BiConsumer<Integer, String> printBiConsumer = (number, x) -> log.info("Print2: {}",String.format("%s %d", x, number));
+        BiConsumer<Integer, String> printBiConsumer = (number, x) -> log.info("Print2: {}","%s %d".formatted(x, number));
         printBiConsumer.accept(1, "java");
 
         Supplier<String> printSupplier = () -> "java supplier";
