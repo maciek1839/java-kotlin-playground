@@ -1,5 +1,27 @@
-# Java release
+# Java
 
+- [JDK 25](https://openjdk.org/projects/jdk/25/) | September 2025
+  - Compact Source Files and Instance Main Methods (JEP 512)
+    - Removes boilerplate code to make Java more accessible, especially for beginners.
+    - `void main()` replaces `public static void main(String[] args)` — no class declaration needed.
+    - A new `IO` class in `java.lang` provides basic console I/O methods (e.g. `IO.println`).
+  - Flexible Constructor Bodies (JEP 513)
+    - Allows statements to appear before `super()` or `this()` calls in constructors.
+    - Enables input validation and field assignment prior to delegating to the parent constructor.
+    - Prevents unnecessary parent constructor invocations when validation fails early.
+  - Unnamed Variables and Patterns (JEP 456)
+    - Use `_` (underscore) to explicitly mark variables or patterns that are intentionally unused.
+    - Applicable in `catch` blocks, `switch` pattern cases, lambda parameters, and more.
+  - Scoped Values (JEP 506)
+    - A safer, more efficient alternative to `ThreadLocal` for sharing immutable data within a thread.
+    - A `ScopedValue` is read-only within its bound scope and automatically cleaned up, avoiding leaks.
+    - Works seamlessly with virtual threads and structured concurrency.
+  - Stream Gatherers (JEP 485)
+    - Enhances the Stream API to support custom intermediate operations via gatherers.
+    - Allows building stateful, short-circuiting, and one-to-many intermediate pipeline steps.
+  - Structured Concurrency (JEP 480)
+    - Treats groups of related tasks running in different threads as a single unit of work.
+    - Simplifies error handling and cancellation across concurrent subtasks using `StructuredTaskScope`.
 - [JDK 21](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html) | 19th September 2023
   - Pattern matching for switch
   - Sequenced collections
@@ -18,6 +40,15 @@
       - In Java 17 the exception pinpoints out where and what our null object reference is.
     - Compact Number Formatting Support
 - [JDK 11](https://www.oracle.com/java/technologies/javase/11-relnote-issues.html) | 25th September 2018
+    - Local-Variable Syntax for Lambda Parameters (JEP 323)
+      - Allows 'var' in lambda parameters, enabling annotations on lambda parameters with type inference.
+    - Standardized HTTP Client API (JEP 321)
+      - The HTTP Client API supports HTTP/1.1 and HTTP/2, both synchronous and asynchronous.
+    - New String Methods
+      - isBlank(), lines(), strip(), stripLeading(), stripTrailing(), repeat(int).
+    - Optional.isEmpty()
+    - Predicate.not()
+    - Collection.toArray(IntFunction)
     - A No-Op Garbage Collector / Epsilon
     - Removed deprecated modules e.g. Java EE and CORBA
 - JDK 10
